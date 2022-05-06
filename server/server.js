@@ -32,7 +32,7 @@ app.use(
   })
 );
 
-// app.use("/admin", require("./routes/admin"));
+app.use("/admin", require("./routes/admin"));
 app.use("/oauth", require("./routes/oauth"));
 
 server.listen(PORT, "0.0.0.0", () =>
