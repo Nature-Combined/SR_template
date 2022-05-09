@@ -30,7 +30,6 @@ module.exports = async (req, res) => {
     db.query(sql, params, (err, result) => {
       console.log(result);
       if (!result) {
-
       }
     });
     res.status(200).send({ ...userInfo.data, accessToken });

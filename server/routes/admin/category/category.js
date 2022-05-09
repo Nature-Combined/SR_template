@@ -1,9 +1,8 @@
-const db = require("../../config/db");
+const db = require("../../../config/db");
 
 module.exports = (req, res) => {
-  const sql = `DELETE FROM notices WHERE id = ?`;
-  const params = [req.query.id];
-
+  const sql = `INSERT INTO category VALUES(null, ?)`;
+  const params = [req.body.category];
   db.query(sql, params, (err, result) => {
     try {
       if (err) console.log(err);

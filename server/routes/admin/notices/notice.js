@@ -1,4 +1,4 @@
-const db = require("../../config/db");
+const db = require("../../../config/db");
 const moment = require("moment");
 
 module.exports = (req, res) => {

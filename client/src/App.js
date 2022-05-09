@@ -5,7 +5,7 @@ import theme from "./theme";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Kakao from "./pages/Kakao";
-import Admin from "./pages/Admin"
+import Admin from "./pages/Admin";
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-const db = require("../../config/db");
+const db = require("../../../config/db");
 
 module.exports = (req, res) => {
   const sql = `UPDATE notices SET contents = ? WHERE id = ?`;
