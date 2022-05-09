@@ -41,14 +41,14 @@ export default function Sidebar() {
     {
       display: "Oauth",
       icon: <MdMenuBook />,
-      to: "/admin/menu2",
-      section: "menu2",
+      to: "/admin/oauth",
+      section: "oauth",
     },
     {
-      display: "menu3",
+      display: "Category",
       icon: <MdMenuBook />,
-      to: "/admin/menu3",
-      section: "menu3",
+      to: "/admin/category",
+      section: "category",
     },
     {
       display: "menu4",
