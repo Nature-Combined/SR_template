@@ -33,8 +33,7 @@ module.exports = async (req, res) => {
     const sns_id = userInfo.data.id
     const insertParams = [created_date, email, sns_id]
     db.query(sql, params, (err, result) => {
-      console.log(result)
-      if (!result) {
+      if (!result.length) {
         const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type) VALUES (?,?,?,"kakao")`
         db.query(insert, insertParams, (err, result) => {})
       }

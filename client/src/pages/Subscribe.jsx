@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Routes, Route } from 'react-router-dom'
 import SubscribeAppLayout from '../components/SubscribeAppLayout'
-import Blank from './Blank'
+import SubscribeToMeList from './SubscribeToMeList'
+import SubscribeList from './SubscribeList'
 
 function Subscribe() {
   return (
@@ -10,8 +11,8 @@ function Subscribe() {
       {/* TODO: path 변경 */}
       <Routes>
         <Route path='/' element={<SubscribeAppLayout />}>
-          <Route path='/menu2' element={<Blank />} />
-          <Route path='/menu3' element={<Blank />} />
+          <Route path='/menu2' element={<SubscribeToMeList />} />
+          <Route path='/menu3' element={<SubscribeList />} />
         </Route>
       </Routes>
     </Container>

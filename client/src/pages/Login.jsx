@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 export default function Login() {
   return (
@@ -14,7 +14,7 @@ export default function Login() {
         <Naver>네이버로 시작하기</Naver>
       </Container>
     </>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -24,7 +24,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-`;
+`
 
 const Oauth = styled.a`
   width: 80%;
@@ -35,10 +35,10 @@ const Oauth = styled.a`
   color: #efefef;
   font-weight: bold;
   cursor: pointer;
-`;
+`
 const Kakao = styled(Oauth)`
   background-color: #dfdf5f;
-`;
+`
 const Naver = styled(Oauth)`
   background-color: green;
-`;
+`
