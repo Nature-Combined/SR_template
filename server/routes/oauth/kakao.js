@@ -1,5 +1,6 @@
 const axios = require("axios");
 const db = require("../../config/db");
+const moment = require("moment");
 
 module.exports = async (req, res) => {
   const url = new URL("https://kauth.kakao.com/oauth/token");
@@ -24,12 +25,18 @@ module.exports = async (req, res) => {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     });
-
-    const sql = `SELECT * FROM user WHERE sns_id = ? AND sns = "kakao" limit = 1`;
+    const created_date = moment().format("YYYY-MM-DD hh:mm:ss");
+    const sql = `SELECT * FROM user_info WHERE sns_id = ? limit 1`;
     const params = [userInfo.data.id];
+
+    const email = userInfo.data.kakao_account.email;
+    const sns_id = userInfo.data.id;
+    const insertParams = [created_date, email, sns_id];
     db.query(sql, params, (err, result) => {
       console.log(result);
       if (!result) {
+        const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type) VALUES (?,?,?,"kakao")`;
+        db.query(insert, insertParams, (err, result) => {});
       }
     });
     res.status(200).send({ ...userInfo.data, accessToken });

@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import axios from "axios";
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import axios from 'axios'
 
 export default function Kakao() {
   useEffect(() => {
-    const url = new URL(window.location.href);
-    const authorizationCode = url.searchParams.get("code");
+    const url = new URL(window.location.href)
+    const authorizationCode = url.searchParams.get('code')
 
     axios
       .post(
@@ -19,14 +19,15 @@ export default function Kakao() {
       )
       .then((res) => {
         // setAccessToken(res.data.accessToken);
-        console.log(res.data);
+        console.log(res.data)
+
         // navigate("/")
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => console.log(err.response))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
-  return <Container>카카오입니다.</Container>;
+  return <Container>카카오입니다.</Container>
 }
 
 const Container = styled.div`
@@ -34,4 +35,4 @@ const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`;
+`
