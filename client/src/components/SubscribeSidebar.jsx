@@ -31,14 +31,14 @@ export default function SubscribeSidebar() {
     {
       display: '나를 구독한 사람',
       icon: <MdMenuBook />,
-      to: '/subscribe',
-      section: 'menu1',
+      to: '/subscribe/menu2',
+      section: 'menu2',
     },
     {
       display: '내가 구독한 사람',
       icon: <MdMenuBook />,
-      to: '/subscribe/menu2',
-      section: 'menu2',
+      to: '/subscribe/menu3',
+      section: 'menu3',
     },
   ]
 

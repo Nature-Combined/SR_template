@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 
-export default function Kakao() {
+export default function Kakao({ setMyInfo }) {
   useEffect(() => {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')
@@ -20,7 +20,7 @@ export default function Kakao() {
       .then((res) => {
         // setAccessToken(res.data.accessToken);
         console.log(res.data)
-
+        setMyInfo(res.data.kakao_account.email)
         // navigate("/")
       })
       .catch((err) => console.log(err.response))
