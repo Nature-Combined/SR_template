@@ -78,40 +78,53 @@ export default function Category() {
         <button className="category_list_show_btn" onClick={handleList}>카테고리 목록</button>
         {listOnOff &&
           categoryList.map((el) => (
-            <>
+            <div className="">
               <CategoryListBox key={el.id}>
                 <div className="category_list_print_box">{el.category_name}</div>
                 <button
+                  id="listBtn"
                   className="category_list_btn"
                   onClick={() => {
-                    if (el.id === changeCategory) setChangeCategory(null);
-                    else setChangeCategory(el.id);
+                    if (el.id === changeCategory) {
+                      setChangeCategory(null);
+                      document.getElementById("listBtn").classList.remove("modify_show");
+                    }else {
+                      setChangeCategory(el.id);
+                      document.getElementById("listBtn").classList.add("modify_show");
+                    }
                   }}
                 >
                   수정
                 </button>
+                <button className="category_list_btn" onClick={() => handleDelCategory(el.id)}>삭제</button>
+              </CategoryListBox>
 
+              <div className="change_category_wrap">
                 <ChangeCategory isActive={changeCategory === el.id}>
                   <input
+                    className="change_category_input"
                     type="text"
+                    placeholder="변경할 카테고리 이름을 입력해 주세요."
                     onChange={(e) => setChangeCategoryName(e.target.value)}
                   />
                   <button className="category_list_btn" onClick={() => handleChangeCategory(el.id)}>
                     확인
                   </button>
                 </ChangeCategory>
-
-                <button className="category_list_btn" onClick={() => handleDelCategory(el.id)}>삭제</button>
-              </CategoryListBox>
-            </>
+              </div>
+            </div>
           ))}
       </div>
+      {/* <div className="category_modify_section category_list_wrap">
+        <div>
+          
+        </div>
+      </div> */}
     </div>
   );
 }
 
 const CategoryListBox = styled.div`
-  display: flex;
   padding: 10px;
   width: 100%;
 `;
