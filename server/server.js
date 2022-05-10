@@ -35,5 +35,6 @@ app.use(
 app.use('/admin', require('./routes/admin'))
 app.use('/oauth', require('./routes/oauth'))
 app.use('/mypage', require('./routes/mypage'))
+app.use('/subscribe', require('./routes/subscribe'))
 
 server.listen(PORT, '0.0.0.0', () => console.log(`server is now running on ${process.env.PORT}`))

@@ -6,7 +6,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Kakao from './pages/Kakao'
 import Admin from './pages/Admin'
-import Mypage from './pages/Mypage'
+import Mypage from './pages/mypage/Mypage'
 import Subscribe from './pages/Subscribe'
 import { useState } from 'react'
 import Footer from './components/Footer'
@@ -21,11 +21,11 @@ function App() {
           <GlobalStyle />
           <Navbar />
           <Routes>
-            <Route path='/' element={<Login setMyInfo={setMyInfo} />} />
+            <Route path='/' element={<Login />} />
             <Route path='/kakao' element={<Kakao setMyInfo={setMyInfo} />} />
             <Route path='/admin/*' element={<Admin />} />
             <Route path='/mypage/*' element={<Mypage myInfo={myInfo} />} />
-            <Route path='/subscribe/*' element={<Subscribe />} />
+            <Route path='/subscribe/*' element={<Subscribe myInfo={myInfo} />} />
           </Routes>
           <Footer></Footer>
         </ThemeProvider>
