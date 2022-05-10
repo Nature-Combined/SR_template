@@ -1,7 +1,7 @@
 const db = require('../../config/db')
 
 module.exports = (req, res) => {
-  console.log('이것은', req.body.user)
+  // console.log('이것은', req.body.user)
   const sql = `SELECT * FROM user_info WHERE user_id = ?`
   const params = [req.body.user]
   db.query(sql, params, (err, result) => {

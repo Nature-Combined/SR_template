@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import moment from 'moment'
 
 export default function SubscribeList({ myInfo }) {
   const [user, setUser] = useState([])
@@ -22,7 +23,7 @@ export default function SubscribeList({ myInfo }) {
           <tr>
             <th>내가 구독한 사람</th>
             <th>해제</th>
-            <th>구독한 시간</th>
+            <th>구독한 날짜</th>
           </tr>
         </thead>
         <tbody>
@@ -47,6 +48,7 @@ export default function SubscribeList({ myInfo }) {
                         구독해제
                       </button>
                     </td>
+                    <td>{moment(item.create_date).format('YYYY-MM-DD')}</td>
                   </tr>
                 </>
               ))

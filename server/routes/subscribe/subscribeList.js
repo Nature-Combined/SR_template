@@ -1,7 +1,7 @@
 const db = require('../../config/db')
 
 module.exports = (req, res) => {
-  console.log('구독 이것은', req.body.user)
+  // console.log('구독 이것은', req.body.user)
   let params = [req.body.user]
   //@pcw 나를 구독한 사람의 리스트
   if (req.body.type === 'subscribeToMe') {
