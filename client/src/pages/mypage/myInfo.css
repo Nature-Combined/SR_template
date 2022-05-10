@@ -1,0 +1,113 @@
+.member_wrap {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+.member_photo_wrap {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
+.member_photo {
+    overflow: hidden;
+    margin-bottom: 50px;
+    border: solid 2px #555;
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+    background: no-repeat url(../../image/profile.png);
+    background-size: cover;
+}
+.member_photo img {
+    height: 230px;
+    width: 230px;
+    border: 1px;
+}
+.member_info_wrap {
+    width: 60%;
+}
+
+.member_info {
+    display: flex;
+    padding: 15px 0;
+
+}
+.member_info input {
+    background-color: transparent;
+    padding: 5px 2px;
+    margin: 0 10px;
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid #555;
+}
+.member_info span {
+    display: inline-block;
+    width: 20%;
+}
+.member_btn {
+    padding: 5px 13px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background-color: #eee;
+}
+.member_btn:hover {
+    background-color: #555;
+    color: #fff;
+}
+.photo_btn {
+    position: absolute;
+    right: 70px;
+    bottom: 50px;
+    display: inline-block;
+    background: no-repeat url(../../image/camera.png);
+    background-color: #fff;
+    background-size: 30px;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #555;
+    border-radius: 100%;
+    cursor: pointer;
+    /* overflow: hidden; */
+}
+.photo_btn_from input[type="file"] {
+    /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.login_request_wrap {
+    padding-top: 220px;
+}
+.login_request {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 90%;
+    padding: 13px;
+    margin: 20px;
+    border: 2px solid coral;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.login_request span {
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0 20px;
+}
+

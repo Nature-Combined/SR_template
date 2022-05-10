@@ -9,6 +9,7 @@ import Admin from './pages/Admin'
 import Mypage from './pages/mypage/Mypage'
 import Subscribe from './pages/Subscribe'
 import { useState } from 'react'
+import Footer from './components/Footer'
 
 function App() {
   // TODO: 추후 리덕스 또는 토큰 발급 시 변경예정
@@ -26,6 +27,7 @@ function App() {
             <Route path='/mypage/*' element={<Mypage myInfo={myInfo} />} />
             <Route path='/subscribe/*' element={<Subscribe myInfo={myInfo} />} />
           </Routes>
+          <Footer></Footer>
         </ThemeProvider>
       </BrowserRouter>
     </>

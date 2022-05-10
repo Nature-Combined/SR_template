@@ -191,7 +191,9 @@ const QuillContainer = styled.div`
   /* height: 40vh; */
   /* text-align: center; */
 `;
-const NoticeTitleInput = styled.input``;
+const NoticeTitleInput = styled.input`
+
+`;
 const NoticeFetchBtn = styled.button``;
 const NoticeListBox = styled.div``;
 
@@ -222,7 +224,9 @@ const NoticeItem = styled.div`
     `}
 `;
 
-const NoticeShowBox = styled.div``;
+const NoticeShowBox = styled.div`
+border:1px solid #000;
+`;
 
 const ChangeTextArea = styled.textarea`
   padding: 0.5rem;
@@ -231,4 +235,9 @@ const ChangeTextArea = styled.textarea`
   resize: none;
 `;
 const ChangeBtn = styled.button``;
-const DelBtn = styled.button``;
+const DelBtn = styled.button`
+
+`;
+
+
+

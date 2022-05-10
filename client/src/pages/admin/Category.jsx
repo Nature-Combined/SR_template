@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import "./category.css"
 
 export default function Category() {
   const [category, setCategory] = useState("");
@@ -55,57 +56,79 @@ export default function Category() {
   };
 
   return (
-    <>
-      <div>카테고리 생성 삭제 변경 페이지입니다.</div>
-      <div>카테고리 생성</div>
-      <input
-        type="text"
-        onChange={(e) => setCategory(e.target.value)}
-        onKeyPress={(e) => {
-          if (e.code === "Enter") handleCategory();
-        }}
-        placeholder="카테고리를 입력해 주세요."
-      />
-      <button onClick={handleCategory}>생성</button>
+    <div className="category_wrap">
       <div>
-        <button onClick={handleList}>카테고리 목록</button>
+        <div className="category_title">Category</div>
+        <div className="category_produce">
+          <p>카테고리 생성</p>
+
+          <input
+            className="category_produce_input"
+            type="text"
+            onChange={(e) => setCategory(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.code === "Enter") handleCategory();
+            }}
+            placeholder="카테고리를 입력해 주세요."
+          />
+          <button className="category_produce_btn" onClick={handleCategory}>+</button>
+        </div>
+      </div>
+      <div className="category_list_wrap">
+        <button className="category_list_show_btn" onClick={handleList}>카테고리 목록</button>
         {listOnOff &&
           categoryList.map((el) => (
-            <>
+            <div className="">
               <CategoryListBox key={el.id}>
-                <div>{el.category_name}</div>
+                <div className="category_list_print_box">{el.category_name}</div>
                 <button
+                  id="listBtn"
+                  className="category_list_btn"
                   onClick={() => {
-                    if (el.id === changeCategory) setChangeCategory(null);
-                    else setChangeCategory(el.id);
+                    if (el.id === changeCategory) {
+                      setChangeCategory(null);
+                      document.getElementById("listBtn").classList.remove("modify_show");
+                    }else {
+                      setChangeCategory(el.id);
+                      document.getElementById("listBtn").classList.add("modify_show");
+                    }
                   }}
                 >
                   수정
                 </button>
+                <button className="category_list_btn" onClick={() => handleDelCategory(el.id)}>삭제</button>
+              </CategoryListBox>
 
+              <div className="change_category_wrap">
                 <ChangeCategory isActive={changeCategory === el.id}>
                   <input
+                    className="change_category_input"
                     type="text"
+                    placeholder="변경할 카테고리 이름을 입력해 주세요."
                     onChange={(e) => setChangeCategoryName(e.target.value)}
                   />
-                  <button onClick={() => handleChangeCategory(el.id)}>
+                  <button className="category_list_btn" onClick={() => handleChangeCategory(el.id)}>
                     확인
                   </button>
                 </ChangeCategory>
-
-                <button onClick={() => handleDelCategory(el.id)}>삭제</button>
-              </CategoryListBox>
-            </>
+              </div>
+            </div>
           ))}
       </div>
-    </>
+      {/* <div className="category_modify_section category_list_wrap">
+        <div>
+          
+        </div>
+      </div> */}
+    </div>
   );
 }
 
 const CategoryListBox = styled.div`
-  display: flex;
+  padding: 10px;
+  width: 100%;
 `;
 
 const ChangeCategory = styled.div`
-  display: ${({ isActive }) => (isActive ? "inline-block" : "none")};
+  display: ${({ isActive }) => (isActive ? "inline-block" : "none")};  
 `;
