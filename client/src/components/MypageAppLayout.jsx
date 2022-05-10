@@ -1,17 +1,17 @@
 import { Outlet } from 'react-router-dom'
-import SubscribeSidebar from './SubscribeSidebar'
+import MypageSidebar from './MypageSidebar'
 
-const SubscribeAppLayout = () => {
+const MypageAppLayout = () => {
   return (
     <div
       style={{
         padding: '50px 0px 0px 370px',
       }}
     >
-      <SubscribeSidebar />
+      <MypageSidebar />
       <Outlet />
     </div>
   )
 }
 
-export default SubscribeAppLayout
+export default MypageAppLayout

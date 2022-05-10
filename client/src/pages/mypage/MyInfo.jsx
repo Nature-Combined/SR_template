@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
 
-function Mypage({ myInfo }) {
+export default function MyInfo({ myInfo }) {
   const [user, setUser] = useState([])
   const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(true)
@@ -20,19 +20,6 @@ function Mypage({ myInfo }) {
   }, [myInfo])
   console.log(user)
   if (!loading) return null
-  // if (upload) {
-  //   const encodeFileToBase64 = (fileBlob) => {
-  //     const reader = new FileReader()
-  //     reader.readAsDataURL(fileBlob)
-  //     return new Promise((resolve) => {
-  //       reader.onload = () => {
-  //         setImageSrc(reader.result)
-  //         resolve()
-  //       }
-  //     })
-  //   }
-  //   encodeFileToBase64(upload)
-  // }
   return (
     <>
       {user.length ? (
@@ -80,9 +67,6 @@ function Mypage({ myInfo }) {
     </>
   )
 }
-
-export default Mypage
-
 const Container = styled.div`
   margin-top: 5vh;
 `

@@ -11,7 +11,7 @@ export default function Navbar() {
         <MenuBox onClick={() => navigate('/')}>home</MenuBox>
         <MenuBox onClick={() => navigate('/admin')}>관리자</MenuBox>
         <MenuBox onClick={() => navigate('/mypage')}>정보수정</MenuBox>
-        <MenuBox onClick={() => navigate('/subscribe')}>구독</MenuBox>
+        <MenuBox>메뉴4</MenuBox>
         <MenuBox>메뉴5</MenuBox>
       </MenuContainer>
       <MenuIcon onClick={() => setHide((pre) => !pre)}>{hide ? 'icon 넣을 자리 열기' : '닫기'}</MenuIcon>
