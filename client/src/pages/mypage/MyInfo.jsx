@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+import './myInfo.css'
 
 export default function MyInfo({ myInfo }) {
   const [user, setUser] = useState([])
@@ -20,49 +21,59 @@ export default function MyInfo({ myInfo }) {
   }, [myInfo])
   console.log(user)
   if (!loading) return null
+
   return (
     <>
       {user.length ? (
         <Container>
-          <form>
-            <div style={{ border: 'solid 1px', height: '230px', width: '230px' }}>
-              <img style={{ height: '230px', width: '230px' }} />
+          <div className='member_wrap'>
+            <div className='member_photo_wrap'>
+              <div className='member_photo'>
+                <img />
+              </div>
+              <div className='photo_btn_from'>
+              <label className='photo_btn' for="file"></label> 
+              <input type="file" id="file" onChange={(e) => {
+                  console.log(e.target.value);
+                }}
+              /> 
+              </div>
             </div>
-            <input
-              type='file'
-              onChange={(e) => {
-                console.log(e.target.value)
-              }}
-            />
-            <br />
-            <br />
-            No. <input type='text' disabled value={user[0].id} />
-            <br />
-            아이디 <input type='text' disabled={disabled} defaultValue={user[0].user_id} />
-            <br />
-            가입일 <input type='text' disabled value={user[0].created_time} />
-            <br />
-            수정일 <input type='text' disabled value={user[0].modified_time} />
-            <br />
-            sns_id <input type='text' disabled={disabled} defaultValue={user[0].sns_id} />
-            <br />
-            sns_type <input type='text' disabled={disabled} defaultValue={user[0].sns_type} />
-            <br />
-          </form>
-          <button
-            onClick={() => {
-              setDisabled(false)
-            }}
-          >
-            수정하기
-          </button>
+            <div className='member_info_wrap'>
+              <div className="member_info">
+                <span>No.</span><input type='text' disabled value={user[0].id} />
+              </div>
+              <div className="member_info">
+                <span>아이디</span> <input type='text' disabled={disabled} defaultValue={user[0].user_id} />
+              </div>
+              <div className="member_info">
+                <span>가입일</span> <input type='text' disabled value={user[0].created_time} />
+              </div>
+              <div className="member_info">
+                <span>수정일</span> <input type='text' disabled value={user[0].modified_time} />
+              </div>
+              <div className="member_info">
+                <span>sns_id</span> <input type='text' disabled={disabled} defaultValue={user[0].sns_id} />
+              </div>
+              <div className="member_info">
+                <span>sns_type</span> <input type='text' disabled={disabled} defaultValue={user[0].sns_type} />
+              </div>
+
+              <button
+                className="member_btn"
+                onClick={() => {
+                  setDisabled(false)
+                }}
+              >
+                수정하기
+              </button>
+            </div>
+          </div>
         </Container>
       ) : (
-        <>
-          <br />
-          <br />
-          <span>로그인 해주시기 바랍니다.</span>
-        </>
+        <div className='login_request_wrap'>
+          <p className='login_request'><span>!</span>로그인 후 이용가능합니다.</p>
+        </div>
       )}
     </>
   )
