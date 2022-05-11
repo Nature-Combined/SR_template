@@ -47,14 +47,6 @@ const deviceSizes = {
   tabletL: "1024px",
 };
 
-const colors = {
-  black: "#000000",
-  white: "#FFFFFF",
-  gray_1: "#222222",
-  gray_2: "#767676",
-  green_1: "#3cb46e",
-};
-
 const device = {
   mobileS: `only screen and (max-width: ${deviceSizes.mobileS})`,
   mobileM: `only screen and (max-width: ${deviceSizes.mobileM})`,
@@ -63,15 +55,28 @@ const device = {
   tabletL: `only screen and (max-width: ${deviceSizes.tabletL})`,
 };
 
-const theme = {
+export const light = {
   fontSizes,
-  colors,
   deviceSizes,
   device,
   paddings,
   margins,
   interval,
   verticalInterval,
+  color: {
+    basic: "#efefef",
+  },
 };
 
-export default theme;
+export const dark = {
+  fontSizes,
+  deviceSizes,
+  device,
+  paddings,
+  margins,
+  interval,
+  verticalInterval,
+  color: {
+    basic: "#222222",
+  },
+};
