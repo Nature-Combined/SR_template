@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { MdMenuBook } from 'react-icons/md'
 import './sidebar.scss'
 
-export default function SubscribeSidebar() {
+export default function MypageSidebar() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [stepHeight, setStepHeight] = useState(0)
   const sidebarRef = useRef()
@@ -29,16 +29,23 @@ export default function SubscribeSidebar() {
   // TODO: 메뉴명 변경
   const sidebarNavItems = [
     {
+      //TODO: 회원리스트 구독신청 및 여부 확인을 위한 더미데이터
+      display: '회원정보',
+      icon: <MdMenuBook />,
+      to: '/mypage/menu1',
+      section: 'menu1',
+    },
+    {
       display: '나를 구독한 사람',
       icon: <MdMenuBook />,
-      to: '/subscribe',
-      section: 'menu1',
+      to: '/mypage/menu2',
+      section: 'menu2',
     },
     {
       display: '내가 구독한 사람',
       icon: <MdMenuBook />,
-      to: '/subscribe/menu2',
-      section: 'menu2',
+      to: '/mypage/menu3',
+      section: 'menu3',
     },
   ]
 
