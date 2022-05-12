@@ -11,6 +11,7 @@ export default function MyInfo({ myInfo }) {
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [toggleSwitch, setToggleSwitch] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
   // const [upload, setUpload] = useState("");
   const dispatch = useDispatch();
 
@@ -19,22 +20,52 @@ export default function MyInfo({ myInfo }) {
       .post(`${process.env.REACT_APP_API_URL}/mypage/myInfo`, {
         user: myInfo,
       })
-      .then((res) => setUser(res.data.result))
+      .then((res) => {
+        if (res.data !== "유저정보가 없습니다.") {
+          setUser(res.data.result);
+          setProfileImage(res.data.result[0].profile_image);
+          setToggleSwitch(res.data.result[0].color);
+          dispatch(colorReducer(res.data.result[0].color));
+        }
+      })
       .then(() => setLoading(true))
       .catch((err) => console.log(err));
-  }, [myInfo, toggleSwitch]);
-  console.log(user);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [myInfo, toggleSwitch, profileImage]);
+
   if (!loading) return null;
 
   const handleColor = () => {
     const color = user[0].color === "light" ? "dark" : "light";
+    console.log(color);
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/mypage/mycolor?id=${user[0].id}&color=${color}`
       )
-      .then((res) => dispatch(colorReducer(color)))
       .then(() => setToggleSwitch(color))
+      .then((res) => dispatch(colorReducer(color)))
       .catch((err) => console.log(err.response));
+  };
+
+  console.log(profileImage);
+
+  const handleProfile = (e) => {
+    const image = e.target.files[0];
+    const imageUrl = URL.createObjectURL(image);
+
+    const formData = new FormData();
+
+    formData.append("profile", image);
+    formData.append("id", user[0].id);
+
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/mypage/myprofile`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => setProfileImage(imageUrl))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -43,14 +74,19 @@ export default function MyInfo({ myInfo }) {
         <Container>
           <div className="member_wrap">
             <div className="member_photo_wrap">
-              <div className="member_photo">{/* <img /> */}</div>
+              <ProfileBox className="member_photo">
+                <img
+                  src={`${process.env.REACT_APP_API_URL}/${profileImage}`}
+                  alt=""
+                />
+              </ProfileBox>
               <div className="photo_btn_from">
-                <label className="photo_btn" for="file"></label>
+                <label className="photo_btn" htmlFor="file"></label>
                 <input
                   type="file"
                   id="file"
                   onChange={(e) => {
-                    console.log(e.target.value);
+                    handleProfile(e);
                   }}
                 />
               </div>
@@ -74,7 +110,11 @@ export default function MyInfo({ myInfo }) {
               </div>
               <div className="member_info">
                 <span>수정일</span>{" "}
-                <input type="text" disabled value={user[0].modified_time} />
+                <input
+                  type="text"
+                  disabled
+                  value={user[0].modified_time ? user[0].modified_time : ""}
+                />
               </div>
               <div className="member_info">
                 <span>sns_id</span>{" "}
@@ -101,10 +141,11 @@ export default function MyInfo({ myInfo }) {
               >
                 수정하기
               </button>
+              <div>{toggleSwitch} 모드</div>
+              <ToggleBtn onClick={handleColor}>
+                <ToggleInsideCircle toggle={toggleSwitch}></ToggleInsideCircle>
+              </ToggleBtn>
             </div>
-            <ToggleBtn onClick={handleColor}>
-              <ToggleInsideCircle toggle={toggleSwitch}></ToggleInsideCircle>
-            </ToggleBtn>
           </div>
         </Container>
       ) : (
@@ -119,6 +160,16 @@ export default function MyInfo({ myInfo }) {
 }
 const Container = styled.div`
   margin-top: 5vh;
+  color: ${({ theme }) => theme.color.basic};
+  background-color: ${({ theme }) => theme.color.bg};
+`;
+
+const ProfileBox = styled.div`
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const ModeTest = styled.div`
@@ -130,6 +181,7 @@ const ToggleBtn = styled.div`
   border: 1px solid black;
   width: 60px;
   height: 30px;
+  cursor: pointer;
 `;
 
 const ToggleInsideCircle = styled.div`
@@ -137,9 +189,8 @@ const ToggleInsideCircle = styled.div`
   border: 1px solid green;
   width: 28px;
   height: 28px;
-  background-color: ${({ toggle }) => (toggle === "dark" ? "black" : "green")};
+  background-color: ${({ toggle }) => (toggle === "dark" ? "white" : "green")};
   transform: ${({ toggle }) =>
-    toggle === "dark" ? "translateX(80%)" : "translateX(0%)"};
+    toggle === "dark" ? "translateX(110%)" : "translateX(0%)"};
   transition: all 0.5s ease;
-  cursor: pointer;
 `;

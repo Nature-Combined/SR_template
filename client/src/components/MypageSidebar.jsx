@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { MdMenuBook } from "react-icons/md";
 import "./sidebar.scss";
 
+import styled from "styled-components";
+
 export default function MypageSidebar() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [stepHeight, setStepHeight] = useState(0);
@@ -55,7 +57,7 @@ export default function MypageSidebar() {
 
   return (
     <>
-      <div className="sidebar">
+      <Container className="sidebar">
         <div className="sidebar__logo">로고자리</div>
         <div ref={sidebarRef} className="sidebar__menu">
           <div
@@ -69,20 +71,28 @@ export default function MypageSidebar() {
           ></div>
           {sidebarNavItems.map((item, index) => (
             <Link to={item.to} key={index}>
-              <div
+              <Menu
                 className={`sidebar__menu__item ${
                   activeIndex === index ? "active" : ""
                 }`}
               >
                 <div className="sidebar__menu__item__icon">{item.icon}</div>
                 <div className="sidebar__menu__item__text">{item.display}</div>
-              </div>
+              </Menu>
             </Link>
           ))}
         </div>
-      </div>
+      </Container>
       {/* // TODO: 동적으로 바꾸기 */}
       <div className="topbar">admin님 반갑습니다.</div>
     </>
   );
 }
+
+const Container = styled.div`
+  color: ${({ theme }) => theme.color.basic};
+`;
+
+const Menu = styled.div`
+  color: ${({ theme }) => theme.color.basic};
+`;

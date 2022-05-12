@@ -64,7 +64,8 @@ export const light = {
   interval,
   verticalInterval,
   color: {
-    basic: "#efefef",
+    basic: "#222222",
+    bg: "#efefef",
   },
 };
 
@@ -77,6 +78,7 @@ export const dark = {
   interval,
   verticalInterval,
   color: {
-    basic: "#222222",
+    basic: "#efefef",
+    bg: "#222222",
   },
 };

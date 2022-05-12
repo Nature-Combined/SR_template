@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { colorSlice } from "./slice/color";
+import { kakaoSlice } from "./slice/kakaoReducer";
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storage from "redux-persist/lib/storage/session";
 
 const persistConfig = {
   key: "root",
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   color: colorSlice.reducer,
+  kakao: kakaoSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

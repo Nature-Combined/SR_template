@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
     const insertParams = [created_date, email, sns_id];
     db.query(sql, params, (err, result) => {
       if (!result.length) {
-        const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type, color) VALUES (?,?,?,"kakao", 'light')`;
+        const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type, color, profile_image) VALUES (?,?,?,"kakao", 'light', 'profile_uploads\profile.png)`;
         db.query(insert, insertParams, (err, result) => {});
       }
     });
