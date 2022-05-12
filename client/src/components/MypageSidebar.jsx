@@ -85,7 +85,7 @@ export default function MypageSidebar() {
         </div>
       </Container>
       {/* // TODO: 동적으로 바꾸기 */}
-      <div className="topbar">admin님 반갑습니다.</div>
+      {/* <div className="topbar">admin님 반갑습니다.</div> */}
     </>
   );
 }

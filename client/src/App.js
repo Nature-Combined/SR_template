@@ -12,6 +12,9 @@ import VOD from "./pages/VOD";
 import { useState } from "react";
 import Footer from "./components/Footer";
 
+
+import MyPageTest from "./components/MyPageTest";
+
 import { useSelector } from "react-redux";
 
 import Logo from "./components/Logo";
@@ -32,13 +35,13 @@ function App() {
         <ThemeProvider theme={colorTheme[color.color.mode]}>
           <GlobalStyle />
           {/* <Navbar /> */}
-          <Logo />
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/kakao" element={<Kakao setMyInfo={setMyInfo} />} />
             <Route path="/admin/*" element={<Admin />} />
             <Route path="/mypage/*" element={<Mypage myInfo={myInfo} />} />
             <Route path="/vod" element={<VOD />} />
+            <Route path="/mypagetest/*" element={<MyPageTest />} />
             <Route
               path="/subscribe/*"
               element={<Subscribe myInfo={myInfo} />}

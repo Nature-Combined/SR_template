@@ -24,10 +24,9 @@
 }
 
 .member_info {
-  display: flex;
-  padding: 15px 0;
+  
 }
-.member_info input {
+member_info input {
   background-color: transparent;
   padding: 5px 2px;
   margin: 0 10px;

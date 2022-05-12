@@ -18,11 +18,13 @@ footer {
     width: 15%;
     margin: 0 15px;
     background-color: cadetblue;
+    
 }
 .footer_info {
     width: 60%;
     margin: 0 70px;
     font-size: 12px;
+    
 }
 .footer_info h2 {
     padding: 3px 0;
