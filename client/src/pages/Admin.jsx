@@ -8,6 +8,7 @@ import Category from "./admin/Category";
 
 function Admin() {
   return (
+    
     <Container>
       {/* TODO: path 변경 */}
       <Routes>
@@ -27,4 +28,5 @@ export default Admin;
 
 const Container = styled.div`
   margin-top: 5vh;
+  height: 951px;
 `;

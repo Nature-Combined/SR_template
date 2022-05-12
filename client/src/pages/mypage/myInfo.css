@@ -1,10 +1,5 @@
 .member_wrap {
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 100px 20px;
-  display: flex;
-  align-items: center;
-  margin-right: 100px;
+  
 }
 .member_photo_wrap {
   position: relative;
@@ -23,11 +18,6 @@
   width: 200px;
   /* background: no-repeat url(../../image/profile.png); */
   /* background-size: cover; */
-}
-.member_photo img {
-  height: 230px;
-  width: 230px;
-  border: 1px;
 }
 .member_info_wrap {
   width: 60%;
@@ -64,7 +54,7 @@
 }
 .photo_btn {
   position: absolute;
-  right: 70px;
+  right: 190px;
   bottom: 50px;
   display: inline-block;
   background: no-repeat url(../../image/camera.png);
@@ -77,6 +67,9 @@
   border-radius: 100%;
   cursor: pointer;
   /* overflow: hidden; */
+}
+.photo_btn:hover {
+  background-color: #ccc;
 }
 .photo_btn_from input[type="file"] {
   /* 파일 필드 숨기기 */

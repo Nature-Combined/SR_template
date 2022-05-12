@@ -4,6 +4,7 @@ import { MdMenuBook } from "react-icons/md";
 
 import styled from "styled-components";
 import "./sidebar.scss";
+import Logo from '../image/virstory_logo.svg';
 
 export default function Sidebar() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -69,7 +70,7 @@ export default function Sidebar() {
   return (
     <>
       <Container className="sidebar">
-        <div className="sidebar__logo">로고자리</div>
+        <div className="sidebar__logo"><Link to="/"><LogoSize src={Logo}></LogoSize></Link></div>
         <div ref={sidebarRef} className="sidebar__menu">
           <div
             ref={indicatorRef}
@@ -102,8 +103,13 @@ export default function Sidebar() {
 
 const Container = styled.div`
   color: ${({ theme }) => theme.color.basic};
+  background-color: ${({ theme }) => theme.color.sectionBg};
+  box-shadow: ${({ theme }) => theme.boxShadow.box};
 `;
 
 const Menu = styled.div`
-  color: ${({ theme }) => theme.color.basic};
+  color: ${({ theme }) => theme.color.textColor2};
+`;
+const LogoSize = styled.img`
+  height: 120px;
 `;

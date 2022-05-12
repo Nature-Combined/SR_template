@@ -6,6 +6,7 @@ const AppLayout = () => {
     <div
       style={{
         padding: '50px 0px 0px 370px',
+        backgroundColor: '#000',
       }}
     >
       <Sidebar />
