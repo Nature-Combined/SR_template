@@ -42,6 +42,9 @@ app.use("/admin", require("./routes/admin"));
 app.use("/oauth", require("./routes/oauth"));
 app.use("/mypage", upload.single("profile"), require("./routes/mypage"));
 app.use("/subscribe", require("./routes/subscribe"));
+app.get("/video", (req, res) => {
+  res.sendFile("assets/2.mp4", { root: __dirname });
+});
 
 server.listen(PORT, "0.0.0.0", () =>
   console.log(`server is now running on ${process.env.PORT}`)

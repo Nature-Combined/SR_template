@@ -11,7 +11,7 @@ export default function Navbar() {
         <MenuBox onClick={() => navigate("/")}>home</MenuBox>
         <MenuBox onClick={() => navigate("/admin")}>관리자</MenuBox>
         <MenuBox onClick={() => navigate("/mypage")}>정보수정</MenuBox>
-        <MenuBox>메뉴4</MenuBox>
+        <MenuBox onClick={() => navigate("/vod")}>VOD</MenuBox>
         <MenuBox>메뉴5</MenuBox>
       </MenuContainer>
       <MenuIcon onClick={() => setHide((pre) => !pre)}>

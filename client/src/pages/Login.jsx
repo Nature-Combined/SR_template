@@ -26,7 +26,7 @@ export default function Login() {
         </Kakao>
         <Naver>네이버로 시작하기</Naver>
       </Container>
-      <Logout onClick={handleLogout}>로그아웃</Logout>
+      {/* <Logout onClick={handleLogout}>로그아웃</Logout> */}
       {/* <Logout
         href={`https://kauth.kakao.com/oauth/logout?client_id=${process.env.REACT_APP_CLIENT_ID}&logout_redirect_uri=${process.env.REACT_APP_URL}`}
       >
