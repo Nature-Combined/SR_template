@@ -28,4 +28,6 @@ export default Mypage;
 
 const Container = styled.div`
   margin-top: 5vh;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.color.bg};
 `;

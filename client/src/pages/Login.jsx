@@ -17,6 +17,7 @@ export default function Login() {
 
   return (
     <>
+    <LoginHomeBg>
       <Container>
         <Oauth>Google</Oauth>
         <Kakao
@@ -32,6 +33,7 @@ export default function Login() {
       >
         로그아웃
       </Logout> */}
+      </LoginHomeBg>
     </>
   );
 }
@@ -64,3 +66,7 @@ const Naver = styled(Oauth)`
 const LogoutA = styled.a``;
 
 const Logout = styled.div``;
+
+const LoginHomeBg = styled.div`
+  background-color: ${({ theme }) => theme.color.bg};
+`;

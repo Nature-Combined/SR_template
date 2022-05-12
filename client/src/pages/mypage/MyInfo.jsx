@@ -72,7 +72,7 @@ export default function MyInfo({ myInfo }) {
     <>
       {user.length ? (
         <Container>
-          <div className="member_wrap">
+          <MyWrap>
             <div className="member_photo_wrap">
               <ProfileBox className="member_photo">
                 <img
@@ -96,42 +96,42 @@ export default function MyInfo({ myInfo }) {
                 <span>No.</span>
                 <input type="text" disabled value={user[0].id} />
               </div>
-              <div className="member_info">
+              <MemberInfo className="member_info">
                 <span>아이디</span>{" "}
                 <input
                   type="text"
                   disabled={disabled}
                   defaultValue={user[0].user_id}
                 />
-              </div>
-              <div className="member_info">
+              </MemberInfo>
+              <MemberInfo className="member_info">
                 <span>가입일</span>{" "}
                 <input type="text" disabled value={user[0].created_time} />
-              </div>
-              <div className="member_info">
+              </MemberInfo>
+              <MemberInfo className="member_info">
                 <span>수정일</span>{" "}
                 <input
                   type="text"
                   disabled
                   value={user[0].modified_time ? user[0].modified_time : ""}
                 />
-              </div>
-              <div className="member_info">
+              </MemberInfo>
+              <MemberInfo className="member_info">
                 <span>sns_id</span>{" "}
                 <input
                   type="text"
                   disabled={disabled}
                   defaultValue={user[0].sns_id}
                 />
-              </div>
-              <div className="member_info">
+              </MemberInfo>
+              <MemberInfo className="member_info">
                 <span>sns_type</span>{" "}
                 <input
                   type="text"
                   disabled={disabled}
                   defaultValue={user[0].sns_type}
                 />
-              </div>
+              </MemberInfo>
 
               <button
                 className="member_btn"
@@ -146,22 +146,23 @@ export default function MyInfo({ myInfo }) {
                 <ToggleInsideCircle toggle={toggleSwitch}></ToggleInsideCircle>
               </ToggleBtn>
             </div>
-          </div>
+          </MyWrap>
         </Container>
       ) : (
         <div className="login_request_wrap">
-          <ModeTest className="login_request">
+          <ModeMemberInfo className="login_request">
             <span>!</span>로그인 후 이용가능합니다.
-          </ModeTest>
+          </ModeMemberInfo>
         </div>
       )}
     </>
   );
 }
+
+
 const Container = styled.div`
   margin-top: 5vh;
   color: ${({ theme }) => theme.color.basic};
-  background-color: ${({ theme }) => theme.color.bg};
 `;
 
 const ProfileBox = styled.div`
@@ -172,7 +173,7 @@ const ProfileBox = styled.div`
   }
 `;
 
-const ModeTest = styled.div`
+const ModeMemberInfo = styled.div`
   color: ${({ theme }) => theme.color.basic};
 `;
 
@@ -194,3 +195,19 @@ const ToggleInsideCircle = styled.div`
     toggle === "dark" ? "translateX(110%)" : "translateX(0%)"};
   transition: all 0.5s ease;
 `;
+
+const MemberInfo = styled.div`
+  color: ${({theme}) => theme.color.textColor};
+  display: flex;
+  padding: 15px 0;
+`
+const MyWrap = styled.div`
+  border-radius: 10px;
+  padding: 100px 20px;
+  display: flex;
+  align-items: center;
+  margin-right: 100px;
+
+  background-color: ${({ theme }) => theme.color.sectionBg};
+  box-shadow: ${({ theme }) => theme.boxShadow.box};
+`
