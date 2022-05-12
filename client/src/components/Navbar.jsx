@@ -24,12 +24,16 @@ export default function Navbar() {
 const Container = styled.div`
   position: fixed;
   top: 0;
+  height: 58px;
   color: ${({ theme }) => theme.color.basic};
+  background-color: ${({ theme }) => theme.color.sectionBg};
 `;
 
 const MenuContainer = styled.div`
   display: flex;
   width: 100vw;
+  height: 100%;
+  align-items: center;
   justify-content: space-around;
   @media ${({ theme }) => theme.device.mobileL} {
     flex-direction: column;
@@ -39,6 +43,7 @@ const MenuContainer = styled.div`
 
 const MenuBox = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.xxxl};
+  color: ${({ theme }) => theme.color.textColor};
   cursor: pointer;
 
   :hover {
