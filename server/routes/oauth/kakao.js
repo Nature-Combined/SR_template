@@ -31,17 +31,31 @@ module.exports = async (req, res) => {
 
     const email = userInfo.data.kakao_account.email;
     const sns_id = userInfo.data.id;
-    const insertParams = [created_date, email, sns_id, "profile_uploads" + "\\" + "profile.png"];
+    const insertParams = [
+      created_date,
+      email,
+      sns_id,
+      "profile_uploads" + "\\" + "profile.png",
+    ];
+
     db.query(sql, params, (err, result, field) => {
-      if(err) console.log(err)
-      if (result.length === 0) {
+      if (err) console.log(err);
+      else if (result.length === 0) {
         const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type, color, profile_image) VALUES (?,?,?,"kakao", 'light', ?)`;
-        db.query(insert, insertParams, (err, result) => {
-          console.log(result)
+        db.query(insert, insertParams, (err, result2) => {
+          console.log(result2.insertId);
+          const select = `SELECT * FROM user_info WHERE id = ? limit 1`;
+          const params = [result2.insertId];
+          db.query(select, params, (err, result3) => {
+            if (err) console.log(err);
+            else res.status(200).send({ result: result3, is_first: true });
+          });
         });
+      } else {
+        res.status(200).send({ result, is_first: false });
       }
     });
-    res.status(200).send({ ...userInfo.data, accessToken });
+    // res.status(200).send({ ...userInfo.data, accessToken });
   } catch (err) {
     console.log(err);
     return res.status(400);

@@ -10,11 +10,9 @@ import Mypage from "./pages/mypage/Mypage";
 import Subscribe from "./pages/Subscribe";
 import VOD from "./pages/VOD";
 import { useState } from "react";
-import Footer from "./components/Footer";
+import Main from "./pages/Main";
 
 import { useSelector } from "react-redux";
-
-import Logo from "./components/Logo";
 
 function App() {
   // TODO: 추후 리덕스 또는 토큰 발급 시 변경예정
@@ -32,9 +30,9 @@ function App() {
         <ThemeProvider theme={colorTheme[color.color.mode]}>
           <GlobalStyle />
           {/* <Navbar /> */}
-          <Logo />
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/main/*" element={<Main />} />
             <Route path="/kakao" element={<Kakao setMyInfo={setMyInfo} />} />
             <Route path="/admin/*" element={<Admin />} />
             <Route path="/mypage/*" element={<Mypage myInfo={myInfo} />} />

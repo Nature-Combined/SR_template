@@ -26,9 +26,9 @@ export default function Kakao({ setMyInfo }) {
       .then((res) => {
         // setAccessToken(res.data.accessToken);
         // console.log(res.data);
-        dispatch(kakaoReducer(res.data.accessToken));
-        setMyInfo(res.data.kakao_account.email);
-        navigate("/");
+        dispatch(kakaoReducer(res.data));
+        // setMyInfo(res.data.kakao_account.email);
+        navigate("/main");
       })
       .catch((err) => console.log(err.response));
     // eslint-disable-next-line react-hooks/exhaustive-deps

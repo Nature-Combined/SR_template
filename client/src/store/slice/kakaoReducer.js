@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const kakaoSlice = createSlice({
   name: "kakao",
   initialState: {
-    token: "",
+    user_info: "",
   },
   reducers: {
     kakaoReducer: (state, action) => {
-      state.token = action.payload;
+      state.user_info = action.payload;
     },
   },
 });

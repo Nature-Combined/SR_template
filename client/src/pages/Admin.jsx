@@ -8,7 +8,6 @@ import Category from "./admin/Category";
 
 function Admin() {
   return (
-    
     <Container>
       {/* TODO: path 변경 */}
       <Routes>

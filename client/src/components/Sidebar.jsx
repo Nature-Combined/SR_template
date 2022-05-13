@@ -4,7 +4,7 @@ import { MdMenuBook } from "react-icons/md";
 
 import styled from "styled-components";
 import "./sidebar.scss";
-import Logo from '../image/virstory_logo.svg';
+import Logo from "../image/virstory_logo.svg";
 
 export default function Sidebar() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -29,48 +29,46 @@ export default function Sidebar() {
     const activeItem = sidebarNavItems.findIndex(
       (item) => item.section === curPath
     );
-    setActiveIndex(curPath === undefined ? 0 : activeItem);
+    setActiveIndex(activeItem === -1 ? 0 : activeItem);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   // TODO: 메뉴명 변경
   const sidebarNavItems = [
     {
-      display: "공지사항",
+      display: "홈",
       icon: <MdMenuBook />,
-      to: "/admin",
-      section: "menu1",
+      to: "/main",
+      section: "main",
     },
     {
-      display: "Oauth",
+      display: "라이브",
       icon: <MdMenuBook />,
-      to: "/admin/oauth",
-      section: "oauth",
+      to: "/main/live",
+      section: "live",
     },
     {
-      display: "Category",
+      display: "영상 만들기",
       icon: <MdMenuBook />,
-      to: "/admin/category",
-      section: "category",
+      to: "/main/create_video",
+      section: "create_video",
     },
     {
-      display: "menu4",
+      display: "마이페이지",
       icon: <MdMenuBook />,
-      to: "/admin/menu4",
-      section: "menu4",
-    },
-    {
-      display: "menu5",
-      icon: <MdMenuBook />,
-      to: "/admin/menu5",
-      section: "menu5",
+      to: "/main/mypage",
+      section: "mypage",
     },
   ];
 
   return (
     <>
       <Container className="sidebar">
-        <div className="sidebar__logo"><Link to="/"><LogoSize src={Logo}></LogoSize></Link></div>
+        <div className="sidebar__logo">
+          <Link to="/">
+            <LogoSize src={Logo}></LogoSize>
+          </Link>
+        </div>
         <div ref={sidebarRef} className="sidebar__menu">
           <div
             ref={indicatorRef}
@@ -82,7 +80,7 @@ export default function Sidebar() {
             }}
           ></div>
           {sidebarNavItems.map((item, index) => (
-            <Link to={item.to} key={index}>
+            <Link style={{ textDecoration: "none" }} to={item.to} key={index}>
               <Menu
                 className={`sidebar__menu__item ${
                   activeIndex === index ? "active" : ""
@@ -93,10 +91,10 @@ export default function Sidebar() {
               </Menu>
             </Link>
           ))}
+          <hr style={{ width: "80%", margin: "0 auto" }}></hr>
+          <SubscribeBox>구독</SubscribeBox>
         </div>
       </Container>
-      {/* // TODO: 동적으로 바꾸기 */}
-      <div className="topbar">admin님 반갑습니다.</div>
     </>
   );
 }
@@ -112,4 +110,10 @@ const Menu = styled.div`
 `;
 const LogoSize = styled.img`
   height: 120px;
+`;
+
+const SubscribeBox = styled.div`
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 1rem 3rem;
 `;
