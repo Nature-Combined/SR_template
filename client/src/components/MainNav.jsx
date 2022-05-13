@@ -24,6 +24,13 @@ const MyPageHead = styled.div`
   justify-content: space-between;
   height: 80px;
   padding: 0 110px;
+  background-color: #222;
+  input {
+    outline: none;
+  }
+  button {
+    outline: none;
+  }
 `;
 const SideWidth = styled.div`
   width: 245.98px;
@@ -39,6 +46,7 @@ const SearchForm = styled.div`
     border-radius: 5px;
   }
   img {
+    cursor: pointer;
     width: 30px;
     position: absolute;
     right: 10px;
@@ -75,4 +83,7 @@ const BroadcastBtn = styled.button`
   width: 100px;
   height: 43px !important;
   color: #fff;
+  :hover {
+    background-color: #d7402f !important;
+  }
 `;

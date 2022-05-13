@@ -176,7 +176,7 @@ const MyPageShowFrom = styled.div`
 `
 const MyPageInfoForm = styled.div`
     display: flex;
-    justify-content: space-around;
+    flex-flow: column;
     align-items: center;
 `
 const MyPageInfo = styled.div`
