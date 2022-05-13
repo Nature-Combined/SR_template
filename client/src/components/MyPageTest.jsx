@@ -180,7 +180,6 @@ const MyPageInfoForm = styled.div`
     align-items: center;
 `
 const MyPageInfo = styled.div`
-    margin-left: 0px;
     
     input {
         border: none;
