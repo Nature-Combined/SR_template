@@ -23,10 +23,7 @@
   width: 60%;
 }
 
-.member_info {
-  
-}
-member_info input {
+.member_info input {
   background-color: transparent;
   padding: 5px 2px;
   margin: 0 10px;
@@ -56,7 +53,7 @@ member_info input {
   right: 190px;
   bottom: 50px;
   display: inline-block;
-  background: no-repeat url(../../image/camera.png);
+  background: no-repeat url(../../image/camera.svg);
   background-color: #fff;
   background-size: 30px;
   background-position: center;
