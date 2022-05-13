@@ -12,6 +12,9 @@ import VOD from "./pages/VOD";
 import { useState } from "react";
 import Main from "./pages/Main";
 
+
+import MyPageTest from "./components/MyPageTest";
+
 import { useSelector } from "react-redux";
 
 function App() {
@@ -37,6 +40,7 @@ function App() {
             <Route path="/admin/*" element={<Admin />} />
             <Route path="/mypage/*" element={<Mypage myInfo={myInfo} />} />
             <Route path="/vod" element={<VOD />} />
+            <Route path="/mypagetest/*" element={<MyPageTest />} />
             <Route
               path="/subscribe/*"
               element={<Subscribe myInfo={myInfo} />}

@@ -1,108 +1,78 @@
 import React from "react";
 import styled from "styled-components";
-import { BsSearch } from "react-icons/bs";
+import SearchImg from "../image/search.svg";
 export default function MainNav() {
   return (
-    <Container>
-      <NavBox>
-        <SearchBox>
-          <div>
-            <input type="text" placeholder="검색" />
-          </div>
-          <div>
-            <BsSearch />
-          </div>
-        </SearchBox>
-        <LiveBox>
-          <LiveBtn>방송하기</LiveBtn>
-        </LiveBox>
-        <LogoutBox>
-          <LogoutBtn>로그아웃</LogoutBtn>
-        </LogoutBox>
-      </NavBox>
-    </Container>
+    <MyPageHead>
+      <SideWidth></SideWidth>
+      <SearchForm>
+        <input placeholder={"검색"}></input>
+        <img src={SearchImg} alt=""></img>
+      </SearchForm>
+      <DefaultBtnForm>
+        <BroadcastBtn>방송하기</BroadcastBtn>
+        <DefaultBtn>회원가입</DefaultBtn>
+        <DefaultBtn>로그인</DefaultBtn>
+      </DefaultBtnForm>
+    </MyPageHead>
   );
 }
 
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  padding-left: 320px;
-  width: 100%;
-  height: 80px;
-  background-color: #222;
-  /* line-height: 80px; */
-`;
-
-const NavBox = styled.div`
-  height: inherit;
+const MyPageHead = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  height: 80px;
+  padding: 0 110px;
 `;
-const SearchBox = styled.div`
-  /* border: 1px green solid; */
+const SideWidth = styled.div`
+  width: 245.98px;
+`;
 
-  height: inherit;
-  width: 200px;
-  flex: 4;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+const SearchForm = styled.div`
+  position: relative;
 
-  & div {
-    /* border: 2px solid red; */
-    height: 50px;
-
-    > input {
-      height: 50px;
-      width: 25rem;
-      padding: 4px;
-      outline: none;
-      border: none;
-    }
-
-    > svg {
-      height: inherit;
-    }
+  input {
+    width: 600px;
+    padding: 10px;
+    border: 2px solid #c0392b;
+    border-radius: 5px;
   }
-
-  > :nth-child(2) {
-    background-color: #efefef;
-    width: 50px;
+  img {
+    width: 30px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    filter: invert(20%) sepia(82%) saturate(1839%) hue-rotate(343deg)
+      brightness(110%) contrast(90%);
   }
 `;
 
-const LiveBox = styled.div`
-  /* border: 1px gray solid; */
-  flex: 1;
+const DefaultBtnForm = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  width: 400px;
   align-items: center;
 `;
-
-const LogoutBox = styled.div`
-  /* border: 2px red solid; */
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LiveBtn = styled.button`
-  padding: 1rem;
+const DefaultBtn = styled.button`
+  background-color: #5e5e5e;
   border: none;
-  border-radius: 4px;
-  background-color: red;
-  color: #efefef;
-  font-weight: 600;
+  border-radius: 3px;
+  padding: 5px 10px;
+  height: 34px;
+  color: #fff;
+
+  :hover {
+    background-color: #838383;
+  }
 `;
 
-const LogoutBtn = styled(LiveBtn)`
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  background-color: #d3d3d3;
-  border-radius: 4px;
-  color: #efefef;
+const BroadcastBtn = styled.button`
+  background-color: #c0392b !important;
+  border: none;
+  border-radius: 3px;
+  margin-right: 100px;
+  width: 100px;
+  height: 43px !important;
+  color: #fff;
 `;
