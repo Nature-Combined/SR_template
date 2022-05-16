@@ -13,7 +13,7 @@ export default function MyPageTest() {
     <Container>
       <MyPageWrap>
         <MyPageShowWrap>
-          <MyPageH2>마이페이지</MyPageH2>
+          <H2>마이페이지</H2>
           <MyPageShowFrom>
             <MyPageInfoForm>
               <MyPagePhotoForm>
@@ -59,7 +59,7 @@ export default function MyPageTest() {
   );
 }
 const Container = styled.div`
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  font-family: "Noto Sans KR", sans-serif;
   position: relative;
   margin-left: 320px;
   padding-top: 30px;
@@ -67,10 +67,8 @@ const Container = styled.div`
   height: calc(100vh - 80px);
   background-color: #222222;
   color: #efefef;
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
 `;
 const MyPageWrap = styled.div`
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
   position: relative;
   width: 100%;
   height: 100%;
@@ -83,7 +81,6 @@ const MyPageWrap = styled.div`
   }
 `;
 const DefaultBtn = styled.button`
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
   background-color: #5e5e5e;
   border: none;
   border-radius: 3px;
@@ -104,9 +101,9 @@ const MyPageShowWrap = styled.div`
   right: 80px;
   height: 100%;
 `;
-const MyPageH2 = styled.h2`
+const H2 = styled.h2`
   font-size: 30px;
-  padding-bottom: 50px;
+  padding-left: 50px;
 `;
 const MyPageShowFrom = styled.div`
   padding: 0px 7%;
@@ -216,7 +213,7 @@ const PhotoAdd = styled.input`
 const MyVideoFrom = styled.div`
   display: flex;
   flex-flow: column;
-  width: 50%;
+  width: 46%;
 
   button {
     width: 80%;

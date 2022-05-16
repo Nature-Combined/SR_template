@@ -19,7 +19,7 @@ export default function MainNav() {
 }
 
 const MyPageHead = styled.div`
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  font-family: "Noto Sans KR", sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;

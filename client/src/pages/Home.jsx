@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import LeftBtn from "../image/left.svg";
 import RightBtn from "../image/right.svg";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const slides = [
@@ -13,7 +14,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -21,7 +22,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -29,7 +30,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -37,7 +38,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -45,7 +46,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -53,7 +54,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -86,16 +87,16 @@ export default function Home() {
           </SuggestionVideoHead>
           <SuggestionVideoView>
             <Link to="">
-              <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
             </Link>
             <Link to="">
-              <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
             </Link>
             <Link to="">
-              <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
             </Link>
             <Link to="">
-              <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
             </Link>
           </SuggestionVideoView>
         </SuggestionVideo>
@@ -112,7 +113,17 @@ const Container = styled.div`
   height: calc(100vh - 80px);
   background-color: #222222;
   color: #efefef;
-  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  font-family: "Noto Sans KR", sans-serif;
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+  }
+  @media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 576px) {
+  }
 `;
 const MainWrap = styled.div`
   height: 100%;
@@ -130,18 +141,18 @@ const RealTimeVideoHead = styled.div`
 `;
 
 const CarouselBox = styled.div`
-  width: 60%;
+  width: 50%;
   height: 60%;
   margin: 0 auto;
   img {
-    object-fit: contain;
+    object-fit: scale-down;
   }
 `;
 const SlideLeftBtn = styled.div`
   position: absolute;
   top: 50%;
   left: 8%;
-  height: 75px;
+  height: 15%;
   cursor: pointer;
   img {
     height: 100%;
@@ -158,7 +169,7 @@ const SlideRightBtn = styled.div`
   position: absolute;
   top: 50%;
   right: 8%;
-  height: 75px;
+  height: 15%;
   cursor: pointer;
   img {
     height: 100%;
@@ -169,6 +180,14 @@ const SlideRightBtn = styled.div`
   img:hover {
     filter: invert(29%) sepia(36%) saturate(3560%) hue-rotate(343deg)
       brightness(87%) contrast(88%);
+  }
+`;
+const VideoBox = styled.div`
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  img {
+    box-shadow: ${({ theme }) => theme.boxShadow.box};
   }
 `;
 
@@ -192,6 +211,7 @@ const SuggestionChangeBtn = styled.button`
 `;
 const H2 = styled.h3`
   font-size: 30px;
+  padding-left: 4%;
   /* font-family: "Nanum Gothic Coding", monospace; */
   /* font-family: "Do Hyeon", sans-serif; */
 `;
@@ -214,19 +234,19 @@ const SuggestionVideoView = styled.div`
   align-items: center;
   flex-flow: row;
   overflow: hidden;
-  height: 60%;
+  height: 100%;
 
   a {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 25%;
-    height: 90%;
+    height: 80%;
   }
 
   img {
     text-align: center;
-    width: 270px;
+    width: 70%;
     height: 100%;
     object-fit: cover;
     display: inline-block;
@@ -237,10 +257,4 @@ const SuggestionVideoView = styled.div`
       transform: scale(1.05);
     }
   }
-`;
-const VideoBox = styled.div`
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 `;
