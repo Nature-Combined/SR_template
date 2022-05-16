@@ -5,7 +5,7 @@ import { MdMenuBook } from "react-icons/md";
 import styled from "styled-components";
 import "./sidebar.scss";
 import Logo from "../image/virstory_logo.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Bar from "../image/bar.svg";
 
 export default function Sidebar() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -65,7 +65,7 @@ export default function Sidebar() {
   return (
     <>
       <NavBar>
-        <FontAwesomeIcon icon="fa-solid fa-bars" />
+        <img src={Bar}></img>
       </NavBar>
       <Container className="sidebar">
         <div className="sidebar__logo">
@@ -108,6 +108,11 @@ const NavBar = styled.div`
     display: block;
     width: 100px;
     height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: invert(33%) sepia(26%) saturate(5097%) hue-rotate(343deg)
+      brightness(78%) contrast(90%);
   }
 `;
 const Container = styled.div`

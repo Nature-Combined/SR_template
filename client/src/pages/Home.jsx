@@ -118,7 +118,7 @@ const Container = styled.div`
   @media only screen and (max-width: 992px) {
     width: 100%;
     margin: 0;
-    padding-left: 0;
+    padding: 0;
   }
   @media only screen and (max-width: 768px) {
   }
