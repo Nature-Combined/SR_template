@@ -100,6 +100,7 @@ export default function Sidebar() {
 }
 
 const Container = styled.div`
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
   color: ${({ theme }) => theme.color.basic};
   background-color: ${({ theme }) => theme.color.sectionBg};
   box-shadow: ${({ theme }) => theme.boxShadow.box};
