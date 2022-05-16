@@ -8,6 +8,7 @@ import AddImage from "./MyCharacter/AddImage";
 import AddMyChar from "../pages/MyCharacter/AddMyChar";
 
 import { useSelector } from "react-redux";
+import MyPageTest from "../components/MyPageTest";
 
 export default function Main() {
   const kakao = useSelector((state) => state.persist.kakao);
@@ -22,7 +23,7 @@ export default function Main() {
           )}
           <Route path="/live" element={<Blank />} />
           <Route path="/create_video" element={<Blank />} />
-          <Route path="/mypage" element={<Blank />} />
+          <Route path="/mypage" element={<MyPageTest />} />
           <Route path="/addimage" element={<AddImage />} />
         </Route>
       </Routes>

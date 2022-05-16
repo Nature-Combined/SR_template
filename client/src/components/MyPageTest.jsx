@@ -8,33 +8,12 @@ import Thumbnail from '../image/thumbnail.jpg';
 import { DefaultContext } from "react-icons/lib";
 import Edit from '../image/edit.svg'
 
+
 export default function MyPageTest() {
     return (
         <>
             <MyPageWrap>
-                <MyPageHead>
-                    <SideWidth></SideWidth>
-                    <SearchForm><input placeholder={"검색"}></input><img src={SearchImg}></img></SearchForm>
-                    <DefaultBtnForm>
-                        <BroadcastBtn>방송하기</BroadcastBtn>
-                        <DefaultBtn>회원가입</DefaultBtn>
-                        <DefaultBtn>로그인</DefaultBtn>
-                    </DefaultBtnForm>
-
-                </MyPageHead>
                 <MyPageShow>
-
-                    <MyPageSide>
-                        <LogoFrom>
-                            <img src={LogoImg}></img>
-                        </LogoFrom>
-                        {/* <ul>
-                            <li><Link to={""}>홈</Link></li>
-                            <li><Link to={""}>프로필 사진</Link></li>
-                            <li><Link to={""}>구독자 수</Link></li>
-                            <li><Link to={""}></Link></li>
-                        </ul> */}
-                    </MyPageSide>
                     <MyPageShowWrap>
                             <MyPageH2>마이페이지</MyPageH2>
                             
@@ -88,56 +67,6 @@ const MyPageWrap = styled.div`
         outline: none;
     }
 `
-
-const MyPageHead = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 80px;
-  padding: 0 110px;
-  background-color: #222;
-  
-  input {
-    outline: none;
-  }
-  button {
-    outline: none;
-  }
-`;
-const SideWidth = styled.div`
-  width: 245.98px;
-`;
-
-const SearchForm = styled.div`
-  position: relative;
-
-  input {
-    width: 600px;
-    padding: 10px;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    transition: all 0.2s;
-  }
-  input:focus {
-    border: 3px solid #c0392b;
-  }
-  img {
-    cursor: pointer;
-    width: 30px;
-    position: absolute;
-    right: 10px;
-    top: 8px;
-    filter: invert(20%) sepia(82%) saturate(1839%) hue-rotate(343deg)
-      brightness(110%) contrast(90%);
-  }
-`;
-
-const DefaultBtnForm = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 400px;
-  align-items: center;
-`;
 const DefaultBtn = styled.button`
   background-color: #5e5e5e;
   border: none;
@@ -151,35 +80,6 @@ const DefaultBtn = styled.button`
   }
 `;
 
-const BroadcastBtn = styled.button`
-  background-color: #c0392b !important;
-  border: none;
-  border-radius: 3px;
-  margin-right: 100px;
-  width: 100px;
-  height: 43px !important;
-  color: #fff;
-  transition: all 0.2s;
-  :hover {
-    background-color: #ff4c38 !important;
-  }
-`;
-
-const LogoFrom = styled.div`
-    width: 245.98px;
-    z-index: 1;
-    text-align: center;
-    img {
-        width: 150px;
-    }
-`
-const MyPageSide = styled.div`
-    position: absolute;
-    top: 0;
-    width: 17%;
-    height: 100%;
-    border-right: 1px solid #555;
-`
 const MyPageShowWrap = styled.div`
     display: flex;
     flex-flow: column;
@@ -210,6 +110,7 @@ const MyPageInfoForm = styled.div`
 const MyPageInfo = styled.div`
 display: flex;
 flex-flow: column;
+margin: 10px 0;
     
     input {
         border: none;
@@ -308,22 +209,9 @@ const MyVideoFrom = styled.div`
         margin: 25px 0;
     }
 `
-const MyPageH3 = styled.h3`
-    font-size: 16px;
-`
 const MyPageSpan = styled.span`
     display: inline-block;
     width: 70px;
     font-size: 16px;
     color: #eee;
-`
-const MyVideoShow = styled.div`
-    /* display: flex;
-    justify-content: space-between; */
-
-    img {
-        border: 1px solid #555;
-        display: inline-block;
-        width: 200px;
-    }
 `
