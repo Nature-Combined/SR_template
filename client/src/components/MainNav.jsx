@@ -19,13 +19,14 @@ export default function MainNav() {
 }
 
 const MyPageHead = styled.div`
+  font-family: "Noto Sans KR", sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 80px;
   padding: 0 110px;
   background-color: #222;
-  
+
   input {
     outline: none;
   }
@@ -34,14 +35,15 @@ const MyPageHead = styled.div`
   }
 `;
 const SideWidth = styled.div`
-  width: 245.98px;
+  width: 200px;
 `;
 
 const SearchForm = styled.div`
   position: relative;
+  width: 35%;
 
   input {
-    width: 600px;
+    width: 100%;
     padding: 10px;
     border: 3px solid #fff;
     border-radius: 5px;
@@ -62,6 +64,7 @@ const SearchForm = styled.div`
 `;
 
 const DefaultBtnForm = styled.div`
+  margin: 30px 0;
   display: flex;
   justify-content: space-evenly;
   width: 400px;
@@ -86,7 +89,7 @@ const BroadcastBtn = styled.button`
   border-radius: 3px;
   margin-right: 100px;
   width: 100px;
-  height: 43px !important;
+  height: 50px !important;
   color: #fff;
   transition: all 0.3s;
   :hover {
