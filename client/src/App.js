@@ -5,15 +5,14 @@ import { light, dark } from "./theme";
 // import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Kakao from "./pages/Kakao";
-import Admin from "./pages/Admin";
-import Mypage from "./pages/mypage/Mypage";
+// import Admin from "./pages/Admin";
+// import Mypage from "./pages/mypage/Mypage";
 import Subscribe from "./pages/Subscribe";
-import VOD from "./pages/VOD";
+// import VOD from "./pages/VOD";
 import { useState } from "react";
 import Main from "./pages/Main";
 
-
-import MyPageTest from "./components/MyPageTest";
+// import MyPageTest from "./components/MyPageTest";
 
 import { useSelector } from "react-redux";
 
@@ -37,10 +36,10 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/main/*" element={<Main />} />
             <Route path="/kakao" element={<Kakao setMyInfo={setMyInfo} />} />
-            <Route path="/admin/*" element={<Admin />} />
+            {/* <Route path="/admin/*" element={<Admin />} />
             <Route path="/mypage/*" element={<Mypage myInfo={myInfo} />} />
             <Route path="/vod" element={<VOD />} />
-            <Route path="/mypagetest/*" element={<MyPageTest />} />
+            <Route path="/mypagetest/*" element={<MyPageTest />} /> */}
             <Route
               path="/subscribe/*"
               element={<Subscribe myInfo={myInfo} />}

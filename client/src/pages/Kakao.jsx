@@ -25,8 +25,8 @@ export default function Kakao({ setMyInfo }) {
       )
       .then((res) => {
         // setAccessToken(res.data.accessToken);
-        // console.log(res.data);
-        dispatch(kakaoReducer(res.data));
+        console.log("카카오 res.data", res.data);
+        dispatch(kakaoReducer(res.data.result));
         // setMyInfo(res.data.kakao_account.email);
         navigate("/main");
       })

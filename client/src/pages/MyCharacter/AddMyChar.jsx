@@ -1,9 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { kakaoReducer } from "../../store/slice/kakaoReducer";
 
 export default function AddMyChar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const kakao = useSelector((state) => state.persist.kakao);
+
+  const handleRouter = () => {
+    dispatch(
+      kakaoReducer({
+        ...kakao.user_info,
+        is_first: false,
+      })
+    );
+  };
+
   return (
     <Container>
       <ItemBox>
@@ -15,9 +29,7 @@ export default function AddMyChar() {
         </ImageBox>
         <DescBox>나만의 캐릭터를 만들어보세요</DescBox>
         <BtnBox>
-          <CreateBtnLater onClick={() => navigate("/main")}>
-            나중에 만들기
-          </CreateBtnLater>
+          <CreateBtnLater onClick={handleRouter}>나중에 만들기</CreateBtnLater>
           <CreateBtnNow onClick={() => navigate("/main/addimage")}>
             지금 만들기
           </CreateBtnNow>
