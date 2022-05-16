@@ -55,7 +55,6 @@ const device = {
   tabletL: `only screen and (max-width: ${deviceSizes.tabletL})`,
 };
 
-
 export const light = {
   fontSizes,
   deviceSizes,
@@ -67,12 +66,12 @@ export const light = {
   color: {
     bg: "#efefef",
     basic: "#222222",
-    sectionBg: "#fff", 
+    sectionBg: "#fff",
     textColor: "#555",
-    textColor2: "#555"
+    textColor2: "#555",
   },
   boxShadow: {
-    box: "0px 0px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)"
+    box: "0px 0px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)",
   },
 };
 
@@ -89,9 +88,9 @@ export const dark = {
     basic: "#efefef",
     sectionBg: "#2c2c2c",
     textColor: "#eee",
-    textColor2: "#858585"
+    textColor2: "#858585",
   },
   boxShadow: {
-    box: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;"
+    box: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;",
   },
 };

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import LeftBtn from "../image/left.svg";
 import RightBtn from "../image/right.svg";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const [slideIdx, setSlideIdx] = useState(0);
@@ -15,7 +16,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -23,7 +24,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -31,7 +32,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -39,7 +40,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -47,7 +48,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -55,7 +56,7 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/600/200/?random" alt="1" />
+          <img src="https://picsum.photos/700/300/?random" alt="1" />
         </VideoBox>
       ),
     },
@@ -128,33 +129,51 @@ export default function Home() {
 const Container = styled.div`
   position: relative;
   margin-left: 320px;
-  padding-top: 70px;
+  padding-top: 30px;
   padding-left: 30px;
   height: calc(100vh - 80px);
   background-color: #222222;
   color: #efefef;
+  font-family: "Noto Sans KR", sans-serif;
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+  }
+  @media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 576px) {
+  }
+`;
+const MainWrap = styled.div`
+  height: 100%;
 `;
 const RealTimeVideo = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 50%;
   position: relative;
-  margin: 0 0 70px 30px;
+  margin: 0 6%;
 `;
 const RealTimeVideoHead = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `;
 
 const CarouselBox = styled.div`
-  width: 700px;
-  height: 200px;
+  width: 50%;
+  height: 60%;
   margin: 0 auto;
   img {
-    object-fit: contain;
+    object-fit: scale-down;
   }
 `;
 const SlideLeftBtn = styled.div`
   position: absolute;
-  top: 135px;
-  left: 200px;
-  height: 75px;
+  top: 50%;
+  left: 8%;
+  height: 15%;
   cursor: pointer;
   z-index: 1;
   img {
@@ -170,9 +189,9 @@ const SlideLeftBtn = styled.div`
 `;
 const SlideRightBtn = styled.div`
   position: absolute;
-  top: 135px;
-  right: 200px;
-  height: 75px;
+  top: 50%;
+  right: 8%;
+  height: 15%;
   cursor: pointer;
   z-index: 1;
   img {
@@ -186,13 +205,22 @@ const SlideRightBtn = styled.div`
       brightness(87%) contrast(88%);
   }
 `;
+const VideoBox = styled.div`
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  img {
+    box-shadow: ${({ theme }) => theme.boxShadow.box};
+  }
+`;
 
 const SuggestionVideoChange = styled.div`
   margin-right: 40px;
 `;
 const SuggestionChangeBtn = styled.button`
-  padding: 30px;
-  font-size: 16px;
+  margin: 0 !important;
+  padding: 0 30px;
+  font-size: 20px;
   margin-bottom: 30px;
   font-weight: bold;
   background-color: transparent;
@@ -205,14 +233,22 @@ const SuggestionChangeBtn = styled.button`
   }
 `;
 const H2 = styled.h3`
-  font-size: 20px;
-  height: 100%;
+  font-size: 30px;
+  padding-left: 4%;
+  /* font-family: "Nanum Gothic Coding", monospace; */
+  /* font-family: "Do Hyeon", sans-serif; */
 `;
 const SuggestionVideo = styled.div`
-  margin: 0 30px;
+  height: 40%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: 0 6%;
 `;
 const SuggestionVideoHead = styled.div`
+  margin-bottom: 30px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 const SuggestionVideoView = styled.div`
@@ -221,34 +257,27 @@ const SuggestionVideoView = styled.div`
   align-items: center;
   flex-flow: row;
   overflow: hidden;
-  height: 300px;
+  height: 100%;
 
   a {
-    display: inline-block;
-    width: 200px;
-    margin: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 80%;
   }
 
   img {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 270px;
+    text-align: center;
+    width: 70%;
+    height: 100%;
     object-fit: cover;
     display: inline-block;
     border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     transition: all 0.3s;
+    box-shadow: ${({ theme }) => theme.boxShadow.box};
     :hover {
       transform: scale(1.05);
     }
   }
-`;
-const VideoBox = styled.div`
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 `;

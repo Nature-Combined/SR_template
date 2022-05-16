@@ -5,6 +5,7 @@ import { MdMenuBook } from "react-icons/md";
 import styled from "styled-components";
 import "./sidebar.scss";
 import Logo from "../image/virstory_logo.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Sidebar() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -63,6 +64,9 @@ export default function Sidebar() {
 
   return (
     <>
+      <NavBar>
+        <FontAwesomeIcon icon="fa-solid fa-bars" />
+      </NavBar>
       <Container className="sidebar">
         <div className="sidebar__logo">
           <Link to="/">
@@ -98,11 +102,27 @@ export default function Sidebar() {
     </>
   );
 }
-
+const NavBar = styled.div`
+  display: none;
+  @media only screen and (max-width: 992px) {
+    display: block;
+    width: 100px;
+    height: 100px;
+  }
+`;
 const Container = styled.div`
+  font-family: "Noto Sans KR", sans-serif;
   color: ${({ theme }) => theme.color.basic};
   background-color: ${({ theme }) => theme.color.sectionBg};
   box-shadow: ${({ theme }) => theme.boxShadow.box};
+
+  @media only screen and (max-width: 992px) {
+    display: none;
+  }
+  @media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 576px) {
+  }
 `;
 
 const Menu = styled.div`

@@ -43,72 +43,79 @@ export default function MyPageTest() {
   };
 
   return (
-    <>
+    <Container>
       <MyPageWrap>
-        <MyPageShow>
-          <MyPageShowWrap>
-            <MyPageH2>마이페이지</MyPageH2>
-            <MyPageShowFrom>
-              <MyPageInfoForm>
-                <MyPagePhotoForm>
-                  <PhotoForm>
-                    <img
-                      src={`${process.env.REACT_APP_API_URL}/${profileImage}`}
-                      alt=""
-                    ></img>
-                  </PhotoForm>
-                  <label className="photo_btn" htmlFor="file"></label>
-                  <PhotoAdd
-                    type={"file"}
-                    id={"file"}
-                    onChange={(e) => {
-                      handleProfile(e);
-                    }}
-                  ></PhotoAdd>
-                </MyPagePhotoForm>
-                <MyPageInfo>
-                  <MyPageInfoWrap>
-                    <MyPageSpan>내 이름</MyPageSpan>
-                    <input
-                      type={"text"}
-                      value={"홍길동"}
-                      placeholder={"변경할 이름을 입력해주세요"}
-                      disabled
-                    ></input>
-                    <button>
-                      <img src={Edit} alt=""></img>
-                    </button>
-                  </MyPageInfoWrap>
-                  <MyPageInfoWrap>
-                    <MyPageSpan>구독자 수</MyPageSpan>
-                    <p>
-                      <span id="subscriber">912</span>명
-                    </p>
-                    <button></button>
-                  </MyPageInfoWrap>
-                </MyPageInfo>
-              </MyPageInfoForm>
-              <MyVideoFrom>
-                <DefaultBtn>내 영상</DefaultBtn>
-                <DefaultBtn>보관한 영상</DefaultBtn>
-                <DefaultBtn>히스토리</DefaultBtn>
-                <DefaultBtn>내 캐릭터 만들기</DefaultBtn>
-                <DefaultBtn onClick={() => navigate("/main/mypage/settings")}>
-                  설정
-                </DefaultBtn>
-              </MyVideoFrom>
-            </MyPageShowFrom>
-          </MyPageShowWrap>
-        </MyPageShow>
+        <MyPageShowWrap>
+          <H2>마이페이지</H2>
+          <MyPageShowFrom>
+            <MyPageInfoForm>
+              <MyPagePhotoForm>
+                <PhotoForm>
+                  <img
+                    src={`${process.env.REACT_APP_API_URL}/${profileImage}`}
+                    alt=""
+                  ></img>
+                </PhotoForm>
+                <label className="photo_btn" htmlFor="file"></label>
+                <PhotoAdd
+                  type={"file"}
+                  id={"file"}
+                  onChange={(e) => {
+                    handleProfile(e);
+                  }}
+                ></PhotoAdd>
+              </MyPagePhotoForm>
+              <MyPageInfo>
+                <MyPageInfoWrap>
+                  <MyPageSpan>내 이름</MyPageSpan>
+                  <input
+                    type={"text"}
+                    value={"홍길동"}
+                    placeholder={"변경할 이름을 입력해주세요"}
+                    disabled
+                  ></input>
+                  <button>
+                    <img src={Edit} alt=""></img>
+                  </button>
+                </MyPageInfoWrap>
+                <MyPageInfoWrap>
+                  <MyPageSpan>구독자 수</MyPageSpan>
+                  <p>
+                    <span id="subscriber">912</span>명
+                  </p>
+                  <button></button>
+                </MyPageInfoWrap>
+              </MyPageInfo>
+            </MyPageInfoForm>
+            <MyVideoFrom>
+              <DefaultBtn>내 영상</DefaultBtn>
+              <DefaultBtn>보관한 영상</DefaultBtn>
+              <DefaultBtn>히스토리</DefaultBtn>
+              <DefaultBtn>내 캐릭터 만들기</DefaultBtn>
+              <DefaultBtn onClick={() => navigate("/main/mypage/settings")}>
+                설정
+              </DefaultBtn>
+            </MyVideoFrom>
+          </MyPageShowFrom>
+        </MyPageShowWrap>
       </MyPageWrap>
-    </>
+    </Container>
   );
 }
-
+const Container = styled.div`
+  font-family: "Noto Sans KR", sans-serif;
+  position: relative;
+  margin-left: 320px;
+  padding-top: 30px;
+  padding-left: 30px;
+  height: calc(100vh - 80px);
+  background-color: #222222;
+  color: #efefef;
+`;
 const MyPageWrap = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #222;
   color: #eee;
 
@@ -133,29 +140,29 @@ const DefaultBtn = styled.button`
 const MyPageShowWrap = styled.div`
   display: flex;
   flex-flow: column;
-  width: 75%;
-  position: absolute;
-  top: 150px;
+  justify-content: center;
+  margin: 0 6%;
   right: 80px;
+  height: 100%;
 `;
-const MyPageH2 = styled.h2`
-  font-size: 28px;
-  padding-bottom: 50px;
-  font-weight: bold;
+const H2 = styled.h2`
+  font-size: 30px;
+  padding-left: 50px;
 `;
 const MyPageShowFrom = styled.div`
-  padding: 0px 50px 0 50px;
-  margin-right: 40px;
+  padding: 0px 7%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 100%;
 `;
 const MyPageInfoForm = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
 `;
 const MyPageInfo = styled.div`
   display: flex;
@@ -208,22 +215,21 @@ const MyPageInfoWrap = styled.div`
     padding: 0 10px;
   }
 `;
-const MyPageShow = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-`;
 const MyPagePhotoForm = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
   text-align: center;
-  width: 50%;
+  width: 100%;
   label {
     border: none;
     background-color: transparent;
-    top: 245px;
-    left: 500px;
-    width: 50px;
-    height: 50px;
+    top: 60%;
+    left: 57%;
+    width: 10%;
+    height: 50%;
     transition: all 0.2s;
+    background-size: 50%;
     filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(50deg)
       brightness(108%) contrast(101%);
   }
@@ -234,32 +240,28 @@ const MyPagePhotoForm = styled.div`
   }
 `;
 const PhotoForm = styled.div`
-  border-radius: 100px;
+  border-radius: 100%;
   overflow: hidden;
-  width: 170px;
-  height: 170px;
+  width: 33%;
+  height: 100%;
 
   img {
     display: inline-block;
     text-align: center;
     width: 100%;
-    height: 100%;
-    object-fit: fill;
   }
 `;
 const PhotoAdd = styled.input`
-  padding: 20px 0;
   display: none;
 `;
 const MyVideoFrom = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 70px;
-  height: 100%;
+  width: 46%;
 
   button {
-    width: 450px;
-    height: 40px;
+    width: 80%;
+    height: 50px;
     margin: 25px 0;
   }
 `;

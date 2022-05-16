@@ -159,7 +159,6 @@ export default function MyInfo({ myInfo }) {
   );
 }
 
-
 const Container = styled.div`
   margin-top: 5vh;
   color: ${({ theme }) => theme.color.basic};
@@ -197,10 +196,10 @@ const ToggleInsideCircle = styled.div`
 `;
 
 const MemberInfo = styled.div`
-  color: ${({theme}) => theme.color.textColor};
+  color: ${({ theme }) => theme.color.textColor};
   display: flex;
   padding: 15px 0;
-`
+`;
 const MyWrap = styled.div`
   border-radius: 10px;
   padding: 100px 20px;
@@ -210,4 +209,4 @@ const MyWrap = styled.div`
 
   background-color: ${({ theme }) => theme.color.sectionBg};
   box-shadow: ${({ theme }) => theme.boxShadow.box};
-`
+`;
