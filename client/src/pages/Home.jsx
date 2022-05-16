@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from "uuid";
@@ -9,6 +9,8 @@ import RightBtn from "../image/right.svg";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
+  const [slideIdx, setSlideIdx] = useState(0);
+
   const slides = [
     {
       key: uuidv4(),
@@ -62,45 +64,64 @@ export default function Home() {
 
   return (
     <Container>
-      <MainWrap>
-        <RealTimeVideo>
-          <RealTimeVideoHead>
-            <H2>실시간 인기 영상</H2>
-          </RealTimeVideoHead>
-          <CarouselBox>
-            <Carousel slides={slides} showNavigation={false} offsetRadius={2} />
-          </CarouselBox>
-          <SlideLeftBtn>
-            <img src={LeftBtn}></img>
-          </SlideLeftBtn>
-          <SlideRightBtn>
-            <img src={RightBtn}></img>
-          </SlideRightBtn>
-        </RealTimeVideo>
-        <SuggestionVideo>
-          <SuggestionVideoHead>
-            <H2>추천 영상</H2>
-            <SuggestionVideoChange>
-              <SuggestionChangeBtn>#VG</SuggestionChangeBtn>
-              <SuggestionChangeBtn>#FT</SuggestionChangeBtn>
-            </SuggestionVideoChange>
-          </SuggestionVideoHead>
-          <SuggestionVideoView>
-            <Link to="">
-              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
-            </Link>
-            <Link to="">
-              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
-            </Link>
-            <Link to="">
-              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
-            </Link>
-            <Link to="">
-              <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
-            </Link>
-          </SuggestionVideoView>
-        </SuggestionVideo>
-      </MainWrap>
+      <RealTimeVideo>
+        <RealTimeVideoHead>
+          <H2>실시간 인기 영상</H2>
+        </RealTimeVideoHead>
+        <CarouselBox>
+          <Carousel
+            slides={slides}
+            showNavigation={false}
+            offsetRadius={2}
+            goToSlide={slideIdx}
+          />
+        </CarouselBox>
+        <SlideLeftBtn
+          onClick={() => {
+            if (slideIdx - 1 >= 0) {
+              setSlideIdx(slideIdx - 1);
+            } else {
+              setSlideIdx(slides.length - 1);
+            }
+          }}
+        >
+          <img src={LeftBtn} alt=""></img>
+        </SlideLeftBtn>
+        <SlideRightBtn
+          onClick={() => {
+            if (slideIdx + 1 < slides.length) {
+              setSlideIdx(slideIdx + 1);
+            } else {
+              setSlideIdx(0);
+            }
+          }}
+        >
+          <img src={RightBtn} alt=""></img>
+        </SlideRightBtn>
+      </RealTimeVideo>
+      <SuggestionVideo>
+        <SuggestionVideoHead>
+          <H2>추천 영상</H2>
+          <SuggestionVideoChange>
+            <SuggestionChangeBtn>#VG</SuggestionChangeBtn>
+            <SuggestionChangeBtn>#FT</SuggestionChangeBtn>
+          </SuggestionVideoChange>
+        </SuggestionVideoHead>
+        <SuggestionVideoView>
+          <Link to="">
+            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+          </Link>
+          <Link to="">
+            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+          </Link>
+          <Link to="">
+            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+          </Link>
+          <Link to="">
+            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+          </Link>
+        </SuggestionVideoView>
+      </SuggestionVideo>
     </Container>
   );
 }
@@ -154,6 +175,7 @@ const SlideLeftBtn = styled.div`
   left: 8%;
   height: 15%;
   cursor: pointer;
+  z-index: 1;
   img {
     height: 100%;
     filter: invert(100%) sepia(1%) saturate(82%) hue-rotate(248deg)
@@ -171,6 +193,7 @@ const SlideRightBtn = styled.div`
   right: 8%;
   height: 15%;
   cursor: pointer;
+  z-index: 1;
   img {
     height: 100%;
     filter: invert(100%) sepia(1%) saturate(82%) hue-rotate(248deg)

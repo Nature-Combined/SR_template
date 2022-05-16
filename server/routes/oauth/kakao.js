@@ -48,11 +48,16 @@ module.exports = async (req, res) => {
           const params = [result2.insertId];
           db.query(select, params, (err, result3) => {
             if (err) console.log(err);
-            else res.status(200).send({ result: result3, is_first: true });
+            else {
+              console.log(result3);
+              res
+                .status(200)
+                .send({ result: { ...result3[0], is_first: true } });
+            }
           });
         });
       } else {
-        res.status(200).send({ result, is_first: false });
+        res.status(200).send({ result: { ...result[0], is_first: false } });
       }
     });
     // res.status(200).send({ ...userInfo.data, accessToken });

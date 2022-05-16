@@ -1,14 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import LogoImg from "../image/virstory_logo.svg";
-import CameraImg from "../image/camera.svg";
-import SearchImg from "../image/search.svg";
-import { Link } from "react-router-dom";
-import Thumbnail from "../image/thumbnail.jpg";
-import { DefaultContext } from "react-icons/lib";
+
 import Edit from "../image/edit.svg";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { kakaoReducer } from "../store/slice/kakaoReducer";
+import { useNavigate } from "react-router-dom";
 
 export default function MyPageTest() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const kakao = useSelector((state) => state.persist.kakao);
+  const [profileImage, setProfileImage] = useState(
+    kakao.user_info.profile_image
+  );
+
+  const handleProfile = (e) => {
+    const image = e.target.files[0];
+    // const imageUrl = URL.createObjectURL(image);
+
+    const formData = new FormData();
+
+    formData.append("profile", image);
+    formData.append("id", kakao.user_info.id);
+
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/mypage/myprofile`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        dispatch(
+          kakaoReducer({
+            ...kakao.user_info,
+            profile_image: res.data.profile_image,
+          })
+        );
+        setProfileImage(res.data.profile_image);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Container>
       <MyPageWrap>
@@ -18,10 +51,19 @@ export default function MyPageTest() {
             <MyPageInfoForm>
               <MyPagePhotoForm>
                 <PhotoForm>
-                  <img src={Thumbnail}></img>
+                  <img
+                    src={`${process.env.REACT_APP_API_URL}/${profileImage}`}
+                    alt=""
+                  ></img>
                 </PhotoForm>
                 <label className="photo_btn" htmlFor="file"></label>
-                <PhotoAdd type={"file"} id={"file"}></PhotoAdd>
+                <PhotoAdd
+                  type={"file"}
+                  id={"file"}
+                  onChange={(e) => {
+                    handleProfile(e);
+                  }}
+                ></PhotoAdd>
               </MyPagePhotoForm>
               <MyPageInfo>
                 <MyPageInfoWrap>
@@ -33,7 +75,7 @@ export default function MyPageTest() {
                     disabled
                   ></input>
                   <button>
-                    <img src={Edit}></img>
+                    <img src={Edit} alt=""></img>
                   </button>
                 </MyPageInfoWrap>
                 <MyPageInfoWrap>
@@ -50,7 +92,9 @@ export default function MyPageTest() {
               <DefaultBtn>보관한 영상</DefaultBtn>
               <DefaultBtn>히스토리</DefaultBtn>
               <DefaultBtn>내 캐릭터 만들기</DefaultBtn>
-              <DefaultBtn>설정</DefaultBtn>
+              <DefaultBtn onClick={() => navigate("/main/mypage/settings")}>
+                설정
+              </DefaultBtn>
             </MyVideoFrom>
           </MyPageShowFrom>
         </MyPageShowWrap>

@@ -7,8 +7,12 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    a{
+    a {
         text-decoration: none;
+    }
+
+    .ql-editor {
+        font-size: 1rem;
     }
 `;
 
