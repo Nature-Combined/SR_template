@@ -24,6 +24,14 @@ const MyPageHead = styled.div`
   justify-content: space-between;
   height: 80px;
   padding: 0 110px;
+  background-color: #222;
+  
+  input {
+    outline: none;
+  }
+  button {
+    outline: none;
+  }
 `;
 const SideWidth = styled.div`
   width: 245.98px;
@@ -35,14 +43,19 @@ const SearchForm = styled.div`
   input {
     width: 600px;
     padding: 10px;
-    border: 2px solid #c0392b;
+    border: 3px solid #fff;
     border-radius: 5px;
+    transition: all 0.3s;
+  }
+  input:focus {
+    border: 3px solid #c0392b;
   }
   img {
+    cursor: pointer;
     width: 30px;
     position: absolute;
     right: 10px;
-    top: 8px;
+    top: 9px;
     filter: invert(20%) sepia(82%) saturate(1839%) hue-rotate(343deg)
       brightness(110%) contrast(90%);
   }
@@ -61,9 +74,9 @@ const DefaultBtn = styled.button`
   padding: 5px 10px;
   height: 34px;
   color: #fff;
-
+  transition: all 0.3s;
   :hover {
-    background-color: #838383;
+    background-color: #878787;
   }
 `;
 
@@ -75,4 +88,8 @@ const BroadcastBtn = styled.button`
   width: 100px;
   height: 43px !important;
   color: #fff;
+  transition: all 0.3s;
+  :hover {
+    background-color: #ff4c38 !important;
+  }
 `;

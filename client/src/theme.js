@@ -92,6 +92,6 @@ export const dark = {
     textColor2: "#858585"
   },
   boxShadow: {
-    box: "inset -5px -5px 0px #000;"
+    box: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;"
   },
 };

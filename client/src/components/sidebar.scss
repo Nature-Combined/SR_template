@@ -9,7 +9,6 @@
   &__logo {
     display: grid;
     place-items: center;
-    height: 120px;
     font-size: 1.5rem;
     font-weight: 700;
     font-family: "Mochiy Pop P one", sans-serif;
@@ -46,7 +45,7 @@
       left: 50%;
       width: calc(100% - 40px);
       border-radius: 5px;
-      background-color: #478fe7;
+      background-color: #c0392b;
       z-index: -1;
       transform: translateX(-50%);
       transition: 0.3s ease-in-out;

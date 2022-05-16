@@ -109,7 +109,7 @@ const Menu = styled.div`
   color: ${({ theme }) => theme.color.textColor2};
 `;
 const LogoSize = styled.img`
-  height: 120px;
+  height: 150px;
 `;
 
 const SubscribeBox = styled.div`
