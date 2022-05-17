@@ -1,38 +1,37 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios";
-import { useSelector } from "react-redux";
+// import axios from "axios";
+// import { useSelector } from "react-redux";
 import Logo from "../components/Logo";
 
 export default function Login() {
-  const kakao = useSelector((state) => state.persist.kakao);
+  // const kakao = useSelector((state) => state.persist.kakao);
 
-  const handleLogout = () => {
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/oauth/kakao/logout`, {
-        accessToken: kakao.token,
-      })
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err.response));
-  };
+  // const handleLogout = () => {
+  //   axios
+  //     .post(`${process.env.REACT_APP_API_URL}/oauth/kakao/logout`, {
+  //       accessToken: kakao.token,
+  //     })
+  //     .then((res) => console.log(res.data))
+  //     .catch((err) => console.log(err.response));
+  // };
 
   return (
     <>
-    <LoginHomeBg>
-      <Container>
-        <Logo/>
-        <Oauth>Google로 시작하기</Oauth>
-        <Kakao
-          href={`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`}
-        >
-          카카오로 시작하기
-        </Kakao>
-        <Naver>네이버로 시작하기</Naver>
-        <Apple>애플로 시작하기</Apple>
-        
-      </Container>
-      {/* <Logout onClick={handleLogout}>로그아웃</Logout> */}
-      {/* <Logout
+      <LoginHomeBg>
+        <Container>
+          <Logo />
+          <Oauth>Google로 시작하기</Oauth>
+          <Kakao
+            href={`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`}
+          >
+            카카오로 시작하기
+          </Kakao>
+          <Naver>네이버로 시작하기</Naver>
+          <Apple>애플로 시작하기</Apple>
+        </Container>
+        {/* <Logout onClick={handleLogout}>로그아웃</Logout> */}
+        {/* <Logout
         href={`https://kauth.kakao.com/oauth/logout?client_id=${process.env.REACT_APP_CLIENT_ID}&logout_redirect_uri=${process.env.REACT_APP_URL}`}
       >
         로그아웃
@@ -49,7 +48,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  color:#fff;
+  color: #fff;
 `;
 
 const Oauth = styled.a`
@@ -71,7 +70,7 @@ const Oauth = styled.a`
 `;
 const Kakao = styled(Oauth)`
   background-color: #f1c40f;
-  
+
   :hover {
     background-color: #cba40c;
     text-decoration: none;
@@ -94,9 +93,6 @@ const Apple = styled(Oauth)`
     color: #fff;
   }
 `;
-const LogoutA = styled.a``;
-
-const Logout = styled.div``;
 
 const LoginHomeBg = styled.div`
   background-color: ${({ theme }) => theme.color.bg};

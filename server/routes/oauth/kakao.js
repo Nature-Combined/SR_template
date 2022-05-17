@@ -38,18 +38,17 @@ module.exports = async (req, res) => {
       "profile_uploads" + "\\" + "profile.png",
     ];
 
-    db.query(sql, params, (err, result, field) => {
+    db.query(sql, params, async (err, result, field) => {
+      const id = result[0].id;
       if (err) console.log(err);
       else if (result.length === 0) {
-        const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type, color, profile_image) VALUES (?,?,?,"kakao", 'light', ?)`;
+        const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type, color, profile_image, is_login) VALUES (?,?,?,"kakao", 'light', ?, 'true')`;
         db.query(insert, insertParams, (err, result2) => {
-          console.log(result2.insertId);
           const select = `SELECT * FROM user_info WHERE id = ? limit 1`;
           const params = [result2.insertId];
           db.query(select, params, (err, result3) => {
             if (err) console.log(err);
             else {
-              console.log(result3);
               res
                 .status(200)
                 .send({ result: { ...result3[0], is_first: true } });
@@ -57,7 +56,24 @@ module.exports = async (req, res) => {
           });
         });
       } else {
-        res.status(200).send({ result: { ...result[0], is_first: false } });
+        const update = `UPDATE user_info SET is_login = 'true' WHERE id = ?`;
+        const params = [result[0].id];
+        db.query(update, params, (err, result, field) => {
+          if (err) console.log(err);
+          //로그인 상태 true 만들고 변경된 값 불러오기 => client 전달
+          else {
+            const select = `SELECT * FROM user_info WHERE id = ? limit 1`;
+            const params = [id];
+            db.query(select, params, (err, data) => {
+              if (err) console.log(err);
+              else
+                res
+                  .status(200)
+                  .send({ result: { ...data[0], is_first: false } });
+            });
+          }
+        });
+        // res.status(200).send({ result: { ...result[0], is_first: false } });
       }
     });
     // res.status(200).send({ ...userInfo.data, accessToken });

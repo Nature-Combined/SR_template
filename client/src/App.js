@@ -11,6 +11,7 @@ import Subscribe from "./pages/Subscribe";
 // import VOD from "./pages/VOD";
 import { useState } from "react";
 import Main from "./pages/Main";
+import Error from "./pages/Error";
 
 // import MyPageTest from "./components/MyPageTest";
 
@@ -19,7 +20,7 @@ import { useSelector } from "react-redux";
 function App() {
   // TODO: 추후 리덕스 또는 토큰 발급 시 변경예정
   const [myInfo, setMyInfo] = useState("");
-  const color = useSelector((state) => state.persist);
+  const persist = useSelector((state) => state.persist);
 
   const colorTheme = {
     light,
@@ -29,12 +30,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <ThemeProvider theme={colorTheme[color.color.mode]}>
+        <ThemeProvider theme={colorTheme[persist.color.mode]}>
           <GlobalStyle />
           {/* <Navbar /> */}
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/main/*" element={<Main />} />
+            {persist.kakao.user_info !== null ? (
+              <Route path="/main/*" element={<Main />} />
+            ) : null}
             <Route path="/kakao" element={<Kakao setMyInfo={setMyInfo} />} />
             {/* <Route path="/admin/*" element={<Admin />} />
             <Route path="/mypage/*" element={<Mypage myInfo={myInfo} />} />
@@ -44,6 +47,7 @@ function App() {
               path="/subscribe/*"
               element={<Subscribe myInfo={myInfo} />}
             />
+            <Route path="*" element={<Error />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
