@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import LeftBtn from "../image/left.svg";
 import RightBtn from "../image/right.svg";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import { BsCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 
 export default function Home() {
   const [slideIdx, setSlideIdx] = useState(0);
@@ -85,7 +85,7 @@ export default function Home() {
             }
           }}
         >
-          <img src={LeftBtn} alt=""></img>
+          <BsCaretLeftFill></BsCaretLeftFill>
         </SlideLeftBtn>
         <SlideRightBtn
           onClick={() => {
@@ -96,7 +96,7 @@ export default function Home() {
             }
           }}
         >
-          <img src={RightBtn} alt=""></img>
+          <BsFillCaretRightFill></BsFillCaretRightFill>
         </SlideRightBtn>
       </RealTimeVideo>
       <SuggestionVideo>
@@ -109,16 +109,16 @@ export default function Home() {
         </SuggestionVideoHead>
         <SuggestionVideoView>
           <Link to="">
-            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+            <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
           </Link>
           <Link to="">
-            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+            <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
           </Link>
           <Link to="">
-            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+            <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
           </Link>
           <Link to="">
-            <img src={"https://picsum.photos/600/200/?random"} alt={""}></img>
+            <img src={"https://picsum.photos/700/300/?random"} alt={""}></img>
           </Link>
         </SuggestionVideoView>
       </SuggestionVideo>
@@ -136,18 +136,15 @@ const Container = styled.div`
   color: #efefef;
   font-family: "Noto Sans KR", sans-serif;
 
-  @media only screen and (max-width: 992px) {
+  @media (min-width: 992px) and (max-width: 1224px) {
     width: 100%;
     margin: 0;
     padding: 0;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (min-width: 768px) {
   }
-  @media only screen and (max-width: 576px) {
+  @media only screen and (min-width: 576px) {
   }
-`;
-const MainWrap = styled.div`
-  height: 100%;
 `;
 const RealTimeVideo = styled.div`
   display: flex;
@@ -156,6 +153,9 @@ const RealTimeVideo = styled.div`
   height: 50%;
   position: relative;
   margin: 0 6%;
+  @media (min-width: 992px) and (max-width: 1224px) {
+    margin: 0 3%;
+  }
 `;
 const RealTimeVideoHead = styled.div`
   margin-bottom: 30px;
@@ -168,6 +168,19 @@ const CarouselBox = styled.div`
   img {
     object-fit: scale-down;
   }
+
+  @media (min-width: 992px) and (max-width: 1224px) {
+    width: 40%;
+    img {
+      max-width: 650px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    width: 20%;
+    img {
+      max-width: 600px;
+    }
+  }
 `;
 const SlideLeftBtn = styled.div`
   position: absolute;
@@ -176,17 +189,21 @@ const SlideLeftBtn = styled.div`
   height: 15%;
   cursor: pointer;
   z-index: 1;
-  img {
+  svg {
+    font-size: 60px;
+    color: ${({ theme }) => theme.color.basicText};
     height: 100%;
-    filter: invert(100%) sepia(1%) saturate(82%) hue-rotate(248deg)
-      brightness(116%) contrast(87%);
     transition: all 0.2s;
   }
-  img:hover {
-    filter: invert(29%) sepia(36%) saturate(3560%) hue-rotate(343deg)
-      brightness(87%) contrast(88%);
+  svg:hover {
+    color: ${({ theme }) => theme.color.pointColor};
+  }
+  @media (min-width: 992px) and (max-width: 1224px) {
+    top: 45%;
+    left: 3%;
   }
 `;
+
 const SlideRightBtn = styled.div`
   position: absolute;
   top: 50%;
@@ -194,21 +211,25 @@ const SlideRightBtn = styled.div`
   height: 15%;
   cursor: pointer;
   z-index: 1;
-  img {
+  svg {
+    font-size: 60px;
+    color: ${({ theme }) => theme.color.basicText};
     height: 100%;
-    filter: invert(100%) sepia(1%) saturate(82%) hue-rotate(248deg)
-      brightness(116%) contrast(87%);
     transition: all 0.2s;
   }
-  img:hover {
-    filter: invert(29%) sepia(36%) saturate(3560%) hue-rotate(343deg)
-      brightness(87%) contrast(88%);
+  svg:hover {
+    color: ${({ theme }) => theme.color.pointColor};
+  }
+  @media (min-width: 992px) and (max-width: 1224px) {
+    top: 45%;
+    right: 3%;
   }
 `;
 const VideoBox = styled.div`
   border-radius: 3px;
   overflow: hidden;
   width: 100%;
+  height: 100%;
   img {
     box-shadow: ${({ theme }) => theme.boxShadow.box};
   }
@@ -224,12 +245,14 @@ const SuggestionChangeBtn = styled.button`
   margin-bottom: 30px;
   font-weight: bold;
   background-color: transparent;
-  color: #efefef;
+  color: ${({ theme }) => theme.color.basicText};
   border: none;
   transition: all 0.3s;
-  outline: none;
   :hover {
-    color: #c0392b;
+    color: ${({ theme }) => theme.color.pointColor};
+  }
+  :focus {
+    outline: none;
   }
 `;
 const H2 = styled.h3`
@@ -244,6 +267,9 @@ const SuggestionVideo = styled.div`
   flex-flow: column;
   justify-content: center;
   margin: 0 6%;
+  @media (min-width: 992px) and (max-width: 1224px) {
+    margin: 0 3%;
+  }
 `;
 const SuggestionVideoHead = styled.div`
   margin-bottom: 30px;
@@ -278,6 +304,9 @@ const SuggestionVideoView = styled.div`
     box-shadow: ${({ theme }) => theme.boxShadow.box};
     :hover {
       transform: scale(1.05);
+    }
+    @media (min-width: 992px) and (max-width: 1224px) {
+      width: 87%;
     }
   }
 `;

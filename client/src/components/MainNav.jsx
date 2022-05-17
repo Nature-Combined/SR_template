@@ -11,8 +11,7 @@ export default function MainNav() {
       </SearchForm>
       <DefaultBtnForm>
         <BroadcastBtn>방송하기</BroadcastBtn>
-        <DefaultBtn>회원가입</DefaultBtn>
-        <DefaultBtn>로그인</DefaultBtn>
+        <DefaultBtn>로그아웃</DefaultBtn>
       </DefaultBtnForm>
     </MyPageHead>
   );
@@ -33,14 +32,27 @@ const MyPageHead = styled.div`
   button {
     outline: none;
   }
+  @media (min-width: 992px) and (max-width: 1224px) {
+    padding: 0 2%;
+  }
+  @media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 576px) {
+  }
 `;
 const SideWidth = styled.div`
-  width: 200px;
+  width: 20%;
+  @media (min-width: 992px) and (max-width: 1224px) {
+  }
 `;
 
 const SearchForm = styled.div`
   position: relative;
   width: 35%;
+
+  @media (min-width: 992px) and (max-width: 1224px) {
+    width: 40%;
+  }
 
   input {
     width: 100%;
@@ -50,7 +62,7 @@ const SearchForm = styled.div`
     transition: all 0.3s;
   }
   input:focus {
-    border: 3px solid #c0392b;
+    border: 3px solid ${({ theme }) => theme.color.pointColor};
   }
   img {
     cursor: pointer;
@@ -64,35 +76,58 @@ const SearchForm = styled.div`
 `;
 
 const DefaultBtnForm = styled.div`
-  margin: 30px 0;
+  font-size: 13px;
   display: flex;
   justify-content: space-evenly;
-  width: 400px;
   align-items: center;
+
+  @media (min-width: 992px) and (max-width: 1224px) {
+    width: 20%;
+    margin: 0;
+  }
+
+  @media only screen and (max-width: 768px) {
+  }
+`;
+const DefaultBtnWrap = styled.div`
+  display: flex;
+  flex-flow: row;
+  @media (min-width: 992px) and (max-width: 1224px) {
+  }
 `;
 const DefaultBtn = styled.button`
+  margin: 2%;
   background-color: #5e5e5e;
   border: none;
   border-radius: 3px;
   padding: 5px 10px;
+  width: 100px;
   height: 34px;
-  color: #fff;
+  color: ${({ theme }) => theme.color.basicText};
   transition: all 0.3s;
   :hover {
     background-color: #878787;
   }
+  @media (min-width: 992px) and (max-width: 1211px) {
+    width: 120px;
+  }
 `;
 
 const BroadcastBtn = styled.button`
-  background-color: #c0392b !important;
+  font-size: 16px;
+  background-color: ${({ theme }) => theme.color.pointColor} !important;
   border: none;
   border-radius: 3px;
-  margin-right: 100px;
-  width: 100px;
+  margin-right: 15%;
+  width: 160px !important;
   height: 50px !important;
-  color: #fff;
+  color: ${({ theme }) => theme.color.basicText};
   transition: all 0.3s;
   :hover {
-    background-color: #ff4c38 !important;
+    background-color: ${({ theme }) => theme.color.pointColor2} !important;
+  }
+  @media (min-width: 992px) and (max-width: 1224px) {
+    margin-right: 2%;
+    width: 160px;
   }
 `;

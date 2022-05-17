@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MdMenuBook } from "react-icons/md";
-
+import { FaBars } from "react-icons/fa";
 import styled from "styled-components";
 import "./sidebar.scss";
 import Logo from "../image/virstory_logo.svg";
-import Bar from "../image/bar.svg";
 
 export default function Sidebar() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -63,10 +62,11 @@ export default function Sidebar() {
   ];
 
   return (
-    <>
+    <SidebarWrap>
       <NavBar>
-        <img src={Bar}></img>
+        <FaBars></FaBars>
       </NavBar>
+      <Bg></Bg>
       <Container className="sidebar">
         <div className="sidebar__logo">
           <Link to="/">
@@ -99,21 +99,42 @@ export default function Sidebar() {
           <SubscribeBox>구독</SubscribeBox>
         </div>
       </Container>
-    </>
+    </SidebarWrap>
   );
 }
+const SidebarWrap = styled.div``;
 const NavBar = styled.div`
   display: none;
-  @media only screen and (max-width: 992px) {
-    display: block;
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    filter: invert(33%) sepia(26%) saturate(5097%) hue-rotate(343deg)
-      brightness(78%) contrast(90%);
+  svg {
+    background-color: ${({ theme }) => theme.boxShadow.box};
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
   }
+  svg:hover {
+    color: ${({ theme }) => theme.color.pointColor};
+  }
+  @media (min-width: 992px) and (max-width: 1224px) {
+    display: block;
+    font-size: 40px;
+    position: absolute;
+    top: 9px;
+    left: 30px;
+    color: #efefef;
+    svg {
+      font-size: 40px;
+    }
+  }
+`;
+const Bg = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #222222cf;
+  z-index: 3;
 `;
 const Container = styled.div`
   font-family: "Noto Sans KR", sans-serif;
@@ -121,12 +142,15 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.color.sectionBg};
   box-shadow: ${({ theme }) => theme.boxShadow.box};
 
-  @media only screen and (max-width: 992px) {
+  @media (min-width: 992px) and (max-width: 1224px) {
+    display: none;
+    padding-bottom: 20px;
+  }
+  @media only screen and (min-width: 768px) {
     display: none;
   }
-  @media only screen and (max-width: 768px) {
-  }
   @media only screen and (max-width: 576px) {
+    display: none;
   }
 `;
 

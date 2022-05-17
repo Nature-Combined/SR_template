@@ -88,9 +88,15 @@ export default function Sidebar() {
 }
 
 const Container = styled.div`
+  font-family: "Noto Sans KR", sans-serif;
   color: ${({ theme }) => theme.color.basic};
   background-color: ${({ theme }) => theme.color.sectionBg};
   box-shadow: ${({ theme }) => theme.boxShadow.box};
+
+  @media (min-width: 992px) and (max-width: 1224px) {
+    display: none;
+    padding-bottom: 20px;
+  }
 `;
 
 const Menu = styled.div`
