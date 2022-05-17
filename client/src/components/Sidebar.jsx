@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
+import { FaBars } from "react-icons/fa";
+
 export default function Sidebar() {
   const subList = useSelector((state) => state.sublist.list);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -76,7 +78,11 @@ export default function Sidebar() {
   };
 
   return (
-    <>
+    <SidebarWrap>
+      <NavBar>
+        <FaBars></FaBars>
+      </NavBar>
+      <Bg></Bg>
       <Container className="sidebar">
         <div className="sidebar__logo">
           <Link to="/">
@@ -129,10 +135,43 @@ export default function Sidebar() {
           </SubBox>
         </div>
       </Container>
-    </>
+    </SidebarWrap>
   );
 }
-
+const SidebarWrap = styled.div``;
+const NavBar = styled.div`
+  display: none;
+  svg {
+    background-color: ${({ theme }) => theme.boxShadow.box};
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+  }
+  svg:hover {
+    color: ${({ theme }) => theme.color.pointColor};
+  }
+  @media only screen and (max-width: 992px) {
+    display: block;
+    font-size: 40px;
+    position: absolute;
+    top: 9px;
+    left: 30px;
+    color: #efefef;
+    svg {
+      font-size: 40px;
+    }
+  }
+`;
+const Bg = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #222222cf;
+  z-index: 3;
+`;
 const Container = styled.div`
   font-family: "Noto Sans KR", sans-serif;
   color: ${({ theme }) => theme.color.basic};
@@ -141,10 +180,13 @@ const Container = styled.div`
 
   @media only screen and (max-width: 992px) {
     display: none;
+    padding-bottom: 20px;
   }
   @media only screen and (max-width: 768px) {
+    display: none;
   }
   @media only screen and (max-width: 576px) {
+    display: none;
   }
 `;
 

@@ -82,8 +82,8 @@ export default function Category() {
         </button>
         {listOnOff &&
           categoryList.map((el) => (
-            <div className="">
-              <CategoryListBox key={el.id}>
+            <div className="" key={el.id}>
+              <CategoryListBox>
                 <div className="category_list_print_box">
                   {el.category_name}
                 </div>

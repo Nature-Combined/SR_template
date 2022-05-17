@@ -6,6 +6,11 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { kakaoReducer } from "../store/slice/kakaoReducer";
 import { useNavigate } from "react-router-dom";
+import "../pages/mypage/myInfo.css";
+
+import { BsCameraFill } from "react-icons/bs";
+import { FaUserAlt } from "react-icons/fa";
+import { AiTwotoneEdit } from "react-icons/ai";
 
 export default function MyPageTest() {
   const navigate = useNavigate();
@@ -55,8 +60,11 @@ export default function MyPageTest() {
                     src={`${process.env.REACT_APP_API_URL}/${profileImage}`}
                     alt=""
                   ></img>
+                  <FaUserAlt></FaUserAlt>
                 </PhotoForm>
-                <label className="photo_btn" htmlFor="file"></label>
+                <label htmlFor="file">
+                  <BsCameraFill></BsCameraFill>
+                </label>
                 <PhotoAdd
                   type={"file"}
                   id={"file"}
@@ -75,7 +83,7 @@ export default function MyPageTest() {
                     disabled
                   ></input>
                   <button>
-                    <img src={Edit} alt=""></img>
+                    <AiTwotoneEdit></AiTwotoneEdit>
                   </button>
                 </MyPageInfoWrap>
                 <MyPageInfoWrap>
@@ -110,7 +118,17 @@ const Container = styled.div`
   padding-left: 30px;
   height: calc(100vh - 80px);
   background-color: #222222;
-  color: #efefef;
+  color: ${({ theme }) => theme.color.basicText};
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
 `;
 const MyPageWrap = styled.div`
   position: relative;
@@ -130,10 +148,14 @@ const DefaultBtn = styled.button`
   border-radius: 3px;
   padding: 5px 10px;
   height: 34px;
-  color: #fff;
+  color: ${({ theme }) => theme.color.basicText};
   transition: all 0.2s;
   :hover {
     background-color: #878787;
+  }
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
   }
 `;
 
@@ -144,6 +166,9 @@ const MyPageShowWrap = styled.div`
   margin: 0 6%;
   right: 80px;
   height: 100%;
+  @media only screen and (max-width: 992px) {
+    margin: 0 3%;
+  }
 `;
 const H2 = styled.h2`
   font-size: 30px;
@@ -155,6 +180,9 @@ const MyPageShowFrom = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  @media only screen and (max-width: 992px) {
+    flex-flow: column;
+  }
 `;
 const MyPageInfoForm = styled.div`
   display: flex;
@@ -163,6 +191,13 @@ const MyPageInfoForm = styled.div`
   justify-content: center;
   width: 50%;
   height: 100%;
+
+  @media only screen and (max-width: 992px) {
+    flex-flow: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 60px;
+  }
 `;
 const MyPageInfo = styled.div`
   display: flex;
@@ -179,32 +214,32 @@ const MyPageInfo = styled.div`
 const MyPageInfoWrap = styled.div`
   margin: 5px 0;
   input {
-    color: #fff;
+    color: ${({ theme }) => theme.color.basicText};
     width: 200px;
     height: 35px;
     padding: 0 10px;
     background-color: transparent;
     text-align: center;
   }
-  input:focus {
-    color: #000;
-  }
   button {
+    color: ${({ theme }) => theme.color.basicText};
     width: 25px;
     height: 25px;
     background-color: transparent;
     transition: all 0.2s;
     border: none;
   }
-  img {
+  button:focus {
+    outline: none;
+  }
+  svg {
+    font-size: 24px;
     transition: all 0.2s;
-    filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(50deg)
-      brightness(108%) contrast(101%);
+    color: ${({ theme }) => theme.color.basicText};
     height: 100%;
   }
-  button:hover img {
-    filter: invert(32%) sepia(52%) saturate(2209%) hue-rotate(344deg)
-      brightness(82%) contrast(86%);
+  button:hover svg {
+    color: ${({ theme }) => theme.color.pointColor};
   }
   p {
     margin: 5px !important;
@@ -220,35 +255,48 @@ const MyPagePhotoForm = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  width: 100%;
+  width: 180px;
+  height: 180px;
   label {
+    position: absolute;
     border: none;
     background-color: transparent;
-    top: 60%;
-    left: 57%;
-    width: 10%;
-    height: 50%;
+    bottom: -10px;
+    right: -70px;
     transition: all 0.2s;
     background-size: 50%;
-    filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(50deg)
-      brightness(108%) contrast(101%);
+    color: ${({ theme }) => theme.color.basicText};
+
+    @media only screen and (max-width: 992px) {
+      right: -50px;
+    }
   }
   label:hover {
-    filter: invert(28%) sepia(66%) saturate(1490%) hue-rotate(336deg)
-      brightness(94%) contrast(96%);
+    color: ${({ theme }) => theme.color.pointColor};
     background-color: transparent;
+  }
+  svg {
+    font-size: 40px;
   }
 `;
 const PhotoForm = styled.div`
   border-radius: 100%;
   overflow: hidden;
-  width: 33%;
-  height: 100%;
+  width: 180px;
+  height: 180px;
+  background-color: #222;
+
+  svg {
+    text-align: center;
+    width: 50%;
+    height: 100%;
+  }
 
   img {
-    display: inline-block;
     text-align: center;
+    object-fit: cover;
     width: 100%;
+    height: 100%;
   }
 `;
 const PhotoAdd = styled.input`
@@ -264,10 +312,20 @@ const MyVideoFrom = styled.div`
     height: 50px;
     margin: 25px 0;
   }
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    align-items: center;
+
+    button {
+      margin: 2%;
+      width: 84%;
+    }
+  }
 `;
 const MyPageSpan = styled.span`
   display: inline-block;
   width: 70px;
   font-size: 16px;
-  color: #eee;
+  color: ${({ theme }) => theme.color.basicText};
 `;
