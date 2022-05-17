@@ -114,7 +114,7 @@ const NavBar = styled.div`
   svg:hover {
     color: ${({ theme }) => theme.color.pointColor};
   }
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     display: block;
     font-size: 40px;
     position: absolute;
@@ -142,11 +142,11 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.color.sectionBg};
   box-shadow: ${({ theme }) => theme.boxShadow.box};
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     display: none;
     padding-bottom: 20px;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (max-width: 768px) {
     display: none;
   }
   @media only screen and (max-width: 576px) {

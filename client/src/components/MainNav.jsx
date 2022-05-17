@@ -32,7 +32,7 @@ const MyPageHead = styled.div`
   button {
     outline: none;
   }
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     padding: 0 2%;
   }
   @media only screen and (max-width: 768px) {
@@ -42,7 +42,7 @@ const MyPageHead = styled.div`
 `;
 const SideWidth = styled.div`
   width: 20%;
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
   }
 `;
 
@@ -50,7 +50,7 @@ const SearchForm = styled.div`
   position: relative;
   width: 35%;
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 40%;
   }
 
@@ -81,7 +81,7 @@ const DefaultBtnForm = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 20%;
     margin: 0;
   }
@@ -92,7 +92,7 @@ const DefaultBtnForm = styled.div`
 const DefaultBtnWrap = styled.div`
   display: flex;
   flex-flow: row;
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
   }
 `;
 const DefaultBtn = styled.button`
@@ -126,7 +126,7 @@ const BroadcastBtn = styled.button`
   :hover {
     background-color: ${({ theme }) => theme.color.pointColor2} !important;
   }
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     margin-right: 2%;
     width: 160px;
   }

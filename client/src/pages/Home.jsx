@@ -136,7 +136,7 @@ const Container = styled.div`
   color: #efefef;
   font-family: "Noto Sans KR", sans-serif;
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 100%;
     margin: 0;
     padding: 0;

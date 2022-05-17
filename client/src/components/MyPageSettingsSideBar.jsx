@@ -93,7 +93,7 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.color.sectionBg};
   box-shadow: ${({ theme }) => theme.boxShadow.box};
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     display: none;
     padding-bottom: 20px;
   }

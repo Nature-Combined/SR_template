@@ -119,12 +119,12 @@ const Container = styled.div`
   height: calc(100vh - 80px);
   background-color: #222222;
   color: ${({ theme }) => theme.color.basicText};
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 100%;
     padding: 0;
     margin: 0;
   }
-  @media only screen and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 100%;
     padding: 0;
     margin: 0;
@@ -154,7 +154,7 @@ const DefaultBtn = styled.button`
     background-color: #878787;
   }
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 100%;
   }
 `;
@@ -166,7 +166,7 @@ const MyPageShowWrap = styled.div`
   margin: 0 6%;
   right: 80px;
   height: 100%;
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     margin: 0 3%;
   }
 `;
@@ -180,7 +180,7 @@ const MyPageShowFrom = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     flex-flow: column;
   }
 `;
@@ -192,7 +192,7 @@ const MyPageInfoForm = styled.div`
   width: 50%;
   height: 100%;
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     flex-flow: row;
     width: 100%;
     justify-content: space-around;
@@ -267,7 +267,7 @@ const MyPagePhotoForm = styled.div`
     background-size: 50%;
     color: ${({ theme }) => theme.color.basicText};
 
-    @media (min-width: 992px) and (max-width: 1224px) {
+    @media only screen and (max-width: 992px) {
       right: -50px;
     }
   }
@@ -313,7 +313,7 @@ const MyVideoFrom = styled.div`
     margin: 25px 0;
   }
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 100%;
     align-items: center;
 
