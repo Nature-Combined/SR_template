@@ -1,12 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MdMenuBook } from "react-icons/md";
-import { FaBars } from "react-icons/fa";
-import styled from "styled-components";
+
+import styled, { css } from "styled-components";
 import "./sidebar.scss";
 import Logo from "../image/virstory_logo.svg";
+import { useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import moment from "moment";
+
+import { FaBars } from "react-icons/fa";
 
 export default function Sidebar() {
+  const subList = useSelector((state) => state.sublist.list);
   const [activeIndex, setActiveIndex] = useState(0);
   const [stepHeight, setStepHeight] = useState(0);
   const sidebarRef = useRef();
@@ -61,6 +67,16 @@ export default function Sidebar() {
     },
   ];
 
+  const timeFormat = (time) => {
+    if (moment().diff(time, "minutes") < 60) {
+      return `${moment().diff(time, "minutes")} 분 전 방송`;
+    } else if (moment().diff(time, "hours") < 24) {
+      return `${moment().diff(time, "hours")} 시간 전 방송`;
+    } else {
+      return `${moment().diff(time, "days")} 일 전 방송`;
+    }
+  };
+
   return (
     <SidebarWrap>
       <NavBar>
@@ -96,7 +112,27 @@ export default function Sidebar() {
             </Link>
           ))}
           <hr style={{ width: "80%", margin: "0 auto" }}></hr>
-          <SubscribeBox>구독</SubscribeBox>
+          <SubBox>
+            <TitleBox>구독</TitleBox>
+            {subList.map((item) => (
+              <SubInfoBox key={uuidv4()}>
+                <ProfileBox isLive={item.is_live === "true"}>
+                  <img
+                    src={`${process.env.REACT_APP_API_URL}/${item.profile_image}`}
+                    alt=""
+                  />
+                </ProfileBox>
+                <InfoBox>
+                  <UserName>{item.user_id}</UserName>
+                  {item.is_live === "true" ? (
+                    <SubNum>{item.viewer_num} 명 시청중</SubNum>
+                  ) : (
+                    <SubNum>{timeFormat(item.live_end_time)}</SubNum>
+                  )}
+                </InfoBox>
+              </SubInfoBox>
+            ))}
+          </SubBox>
         </div>
       </Container>
     </SidebarWrap>
@@ -161,8 +197,60 @@ const LogoSize = styled.img`
   height: 150px;
 `;
 
-const SubscribeBox = styled.div`
+const SubBox = styled.div`
+  height: 40vh;
+  overflow-y: auto;
+`;
+
+const TitleBox = styled.div`
   font-size: 1.25rem;
   font-weight: 500;
   padding: 1rem 3rem;
+`;
+
+const SubInfoBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  gap: 1rem;
+`;
+
+const ProfileBox = styled.div`
+  position: relative;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  ${({ isLive }) => {
+    return (
+      isLive &&
+      css`
+        ::after {
+          position: absolute;
+          bottom: 0;
+          right: 5px;
+          display: inline-block;
+          content: "";
+          width: 10px;
+          height: 10px;
+          border-radius: 100%;
+          background-color: red;
+        }
+      `
+    );
+  }}
+
+  img {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+`;
+
+const InfoBox = styled.div``;
+
+const UserName = styled.div``;
+
+const SubNum = styled.div`
+  width: 130px;
 `;

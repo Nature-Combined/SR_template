@@ -1,7 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import SearchImg from "../image/search.svg";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { kakaoReducer } from "../store/slice/kakaoReducer";
+import axios from "axios";
+
 export default function MainNav() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user_info = useSelector((state) => state.persist.kakao.user_info);
+
+  const handleLogout = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_API_URL}/oauth/kakao/logout?id=${user_info.id}`
+      )
+      .then((res) => {
+        navigate("/");
+        dispatch(kakaoReducer(null));
+      })
+      .catch((err) => console.log(err.response));
+  };
   return (
     <MyPageHead>
       <SideWidth></SideWidth>
@@ -11,7 +31,8 @@ export default function MainNav() {
       </SearchForm>
       <DefaultBtnForm>
         <BroadcastBtn>방송하기</BroadcastBtn>
-        <DefaultBtn>로그아웃</DefaultBtn>
+        {/* <DefaultBtn>회원가입</DefaultBtn> */}
+        <DefaultBtn onClick={() => handleLogout()}>로그아웃</DefaultBtn>
       </DefaultBtnForm>
     </MyPageHead>
   );

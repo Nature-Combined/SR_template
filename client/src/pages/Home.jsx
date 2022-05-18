@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 import LeftBtn from "../image/left.svg";
 import RightBtn from "../image/right.svg";
+
+import ReactPlayer from "react-player";
 import { BsCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 
 export default function Home() {
@@ -16,7 +18,16 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/800/400/?random" alt="1" />
+          {/* <img src="https://picsum.photos/700/300/?random" alt="1" /> */}
+          <ReactPlayer
+            url={`${process.env.REACT_APP_API_URL}/assets/1.mp4`}
+            light={`https://picsum.photos/700/300/?random`}
+            playing={true}
+            muted={true}
+            controls={true}
+            width="700px"
+            height="300px"
+          />
         </VideoBox>
       ),
     },
@@ -24,7 +35,16 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/800/400/?random" alt="1" />
+          {/* <img src="https://picsum.photos/700/300/?random" alt="1" /> */}
+          <ReactPlayer
+            url={`${process.env.REACT_APP_API_URL}/assets/2.mp4`}
+            light={"https://picsum.photos/700/300/?random"}
+            playing={true}
+            muted={true}
+            controls={true}
+            width="700px"
+            height="300px"
+          />
         </VideoBox>
       ),
     },
@@ -32,7 +52,16 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/800/400/?random" alt="1" />
+          {/* <img src="https://picsum.photos/700/300/?random" alt="1" /> */}
+          <ReactPlayer
+            url={`${process.env.REACT_APP_API_URL}/assets/2.mp4`}
+            light={"https://picsum.photos/700/300/?random"}
+            playing={true}
+            muted={true}
+            controls={true}
+            width="700px"
+            height="300px"
+          />
         </VideoBox>
       ),
     },
@@ -40,23 +69,16 @@ export default function Home() {
       key: uuidv4(),
       content: (
         <VideoBox>
-          <img src="https://picsum.photos/800/400/?random" alt="1" />
-        </VideoBox>
-      ),
-    },
-    {
-      key: uuidv4(),
-      content: (
-        <VideoBox>
-          <img src="https://picsum.photos/800/400/?random" alt="1" />
-        </VideoBox>
-      ),
-    },
-    {
-      key: uuidv4(),
-      content: (
-        <VideoBox>
-          <img src="https://picsum.photos/800/400/?random" alt="1" />
+          {/* <img src="https://picsum.photos/700/300/?random" alt="1" /> */}
+          <ReactPlayer
+            url={`${process.env.REACT_APP_API_URL}/assets/2.mp4`}
+            light={"https://picsum.photos/700/300/?random"}
+            playing={true}
+            muted={true}
+            controls={true}
+            width="700px"
+            height="300px"
+          />
         </VideoBox>
       ),
     },
@@ -146,6 +168,8 @@ const RealTimeVideo = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: center;
+  // TODO:
+  /* align-items: center; */
   height: 50%;
   position: relative;
   margin: 0 6%;
@@ -161,6 +185,7 @@ const RealTimeVideo = styled.div`
 `;
 const RealTimeVideoHead = styled.div`
   margin-bottom: 30px;
+  text-align: start;
 `;
 
 const CarouselBox = styled.div`

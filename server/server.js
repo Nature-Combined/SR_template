@@ -29,6 +29,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.use("/profile_uploads", express.static("profile_uploads"));
+app.use("/assets", express.static("assets"));
 app.use(express.json()); //용량제한
 app.use(express.urlencoded({ extended: true }));
 app.use(
