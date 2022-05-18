@@ -47,10 +47,10 @@ export default function MyInfo({ myInfo }) {
       .catch((err) => console.log(err.response));
   };
 
-  console.log(profileImage);
-
   const handleProfile = (e) => {
+    console.log("ddd");
     const image = e.target.files[0];
+    console.log(image);
     const imageUrl = URL.createObjectURL(image);
 
     const formData = new FormData();
@@ -85,7 +85,6 @@ export default function MyInfo({ myInfo }) {
                 <input
                   type="file"
                   id="file"
-                  accept="image/*"
                   onChange={(e) => {
                     handleProfile(e);
                   }}

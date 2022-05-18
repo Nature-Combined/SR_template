@@ -23,7 +23,12 @@ export default function MyPageTest() {
   const handleProfile = (e) => {
     const image = e.target.files[0];
     // const imageUrl = URL.createObjectURL(image);
-
+    console.log(image);
+    if (image.size > 3 * 1024 * 1024) {
+      return window.alert("3mb 이상 파일은 올릴 수 없습니다.");
+    } else if (!image) {
+      return;
+    }
     const formData = new FormData();
 
     formData.append("profile", image);
@@ -68,6 +73,7 @@ export default function MyPageTest() {
                 <PhotoAdd
                   type={"file"}
                   id={"file"}
+                  accept="image/*"
                   onChange={(e) => {
                     handleProfile(e);
                   }}
