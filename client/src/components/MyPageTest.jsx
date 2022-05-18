@@ -124,11 +124,6 @@ const Container = styled.div`
     padding: 0;
     margin: 0;
   }
-  @media only screen and (max-width: 992px) {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
 `;
 const MyPageWrap = styled.div`
   position: relative;
@@ -212,10 +207,14 @@ const MyPageInfo = styled.div`
   }
 `;
 const MyPageInfoWrap = styled.div`
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
   margin: 5px 0;
   input {
     color: ${({ theme }) => theme.color.basicText};
-    width: 200px;
+    width: 40%;
     height: 35px;
     padding: 0 10px;
     background-color: transparent;
@@ -245,7 +244,7 @@ const MyPageInfoWrap = styled.div`
     margin: 5px !important;
     text-align: center;
     display: inline-block;
-    width: 200px;
+    width: 40%;
     height: 35px;
     padding: 0 10px;
   }
@@ -262,13 +261,13 @@ const MyPagePhotoForm = styled.div`
     border: none;
     background-color: transparent;
     bottom: -10px;
-    right: -70px;
+    right: 5px;
     transition: all 0.2s;
     background-size: 50%;
     color: ${({ theme }) => theme.color.basicText};
 
     @media only screen and (max-width: 992px) {
-      right: -50px;
+      right: 0px;
     }
   }
   label:hover {
@@ -276,6 +275,7 @@ const MyPagePhotoForm = styled.div`
     background-color: transparent;
   }
   svg {
+    cursor: pointer;
     font-size: 40px;
   }
 `;
@@ -325,7 +325,8 @@ const MyVideoFrom = styled.div`
 `;
 const MyPageSpan = styled.span`
   display: inline-block;
-  width: 70px;
+  text-align: center;
+  width: 19%;
   font-size: 16px;
   color: ${({ theme }) => theme.color.basicText};
 `;
