@@ -90,9 +90,19 @@ export default function Notification() {
 
 const Container = styled.div`
   margin-left: 320px;
+
+  @media only screen and (max-width: 992px) {
+    margin: 0;
+  }
 `;
 
-const NoticeListBox = styled.div``;
+const NoticeListBox = styled.div`
+  margin: 0 6%;
+
+  @media only screen and (max-width: 992px) {
+    margin: 0 3%;
+  }
+`;
 
 const NoticeListHeaderBox = styled.div`
   margin-top: 100px;

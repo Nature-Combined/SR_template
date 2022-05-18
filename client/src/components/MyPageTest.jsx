@@ -275,6 +275,7 @@ const MyPagePhotoForm = styled.div`
     background-color: transparent;
   }
   svg {
+    cursor: pointer;
     font-size: 40px;
   }
 `;
