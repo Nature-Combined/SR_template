@@ -163,10 +163,6 @@ const Container = styled.div`
     margin: 0;
     padding: 0;
   }
-  @media only screen and (min-width: 768px) {
-  }
-  @media only screen and (min-width: 576px) {
-  }
 `;
 const RealTimeVideo = styled.div`
   display: flex;
@@ -177,8 +173,14 @@ const RealTimeVideo = styled.div`
   height: 50%;
   position: relative;
   margin: 0 6%;
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     margin: 0 3%;
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 0 2%;
+  }
+  @media only screen and (max-width: 576px) {
+    margin: 0 0%;
   }
 `;
 const RealTimeVideoHead = styled.div`
@@ -187,23 +189,30 @@ const RealTimeVideoHead = styled.div`
 `;
 
 const CarouselBox = styled.div`
-  width: 50%;
+  width: 40%;
   height: 60%;
   margin: 0 auto;
   img {
-    object-fit: scale-down;
+    max-width: 800px;
+    object-fit: contain;
   }
 
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     width: 40%;
     img {
       max-width: 650px;
     }
   }
-  @media only screen and (min-width: 768px) {
-    width: 20%;
+  @media only screen and (max-width: 768px) {
+    width: 10%;
     img {
-      max-width: 600px;
+      max-width: 580px;
+    }
+    @media only screen and (max-width: 576px) {
+      width: 0;
+      img {
+        max-width: 440px;
+      }
     }
   }
 `;
@@ -223,9 +232,14 @@ const SlideLeftBtn = styled.div`
   svg:hover {
     color: ${({ theme }) => theme.color.pointColor};
   }
-  @media (min-width: 992px) and (max-width: 1224px) {
-    top: 45%;
-    left: 3%;
+  @media only screen and (max-width: 992px) {
+    left: -1%;
+  }
+  @media only screen and (max-width: 768px) {
+    left: 0%;
+  }
+  @media only screen and (max-width: 576px) {
+    left: 0%;
   }
 `;
 
@@ -245,16 +259,20 @@ const SlideRightBtn = styled.div`
   svg:hover {
     color: ${({ theme }) => theme.color.pointColor};
   }
-  @media (min-width: 992px) and (max-width: 1224px) {
-    top: 45%;
-    right: 3%;
+  @media only screen and (max-width: 992px) {
+    right: -1%;
+  }
+  @media only screen and (max-width: 768px) {
+    right: 0%;
+  }
+  @media only screen and (max-width: 576px) {
+    right: 0%;
   }
 `;
 const VideoBox = styled.div`
   border-radius: 3px;
   overflow: hidden;
   width: 100%;
-  height: 100%;
   img {
     box-shadow: ${({ theme }) => theme.boxShadow.box};
   }
@@ -292,8 +310,14 @@ const SuggestionVideo = styled.div`
   flex-flow: column;
   justify-content: center;
   margin: 0 6%;
-  @media (min-width: 992px) and (max-width: 1224px) {
+  @media only screen and (max-width: 992px) {
     margin: 0 3%;
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 0 2%;
+  }
+  @media only screen and (max-width: 576px) {
+    margin: 0 0%;
   }
 `;
 const SuggestionVideoHead = styled.div`
@@ -330,7 +354,7 @@ const SuggestionVideoView = styled.div`
     :hover {
       transform: scale(1.05);
     }
-    @media (min-width: 992px) and (max-width: 1224px) {
+    @media only screen and (max-width: 992px) {
       width: 87%;
     }
   }

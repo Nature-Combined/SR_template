@@ -57,6 +57,7 @@ const MyPageHead = styled.div`
     padding: 0 2%;
   }
   @media only screen and (max-width: 768px) {
+    padding: 0%;
   }
   @media only screen and (max-width: 576px) {
   }
@@ -64,6 +65,7 @@ const MyPageHead = styled.div`
 const SideWidth = styled.div`
   width: 20%;
   @media only screen and (max-width: 992px) {
+    padding: 0 2%;
   }
 `;
 
@@ -72,7 +74,13 @@ const SearchForm = styled.div`
   width: 35%;
 
   @media only screen and (max-width: 992px) {
-    width: 40%;
+    width: 50%;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 576px) {
+    width: 46%;
   }
 
   input {
@@ -108,6 +116,7 @@ const DefaultBtnForm = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
+    margin-right: 1%;
   }
 `;
 const DefaultBtnWrap = styled.div`
@@ -123,13 +132,19 @@ const DefaultBtn = styled.button`
   border-radius: 3px;
   padding: 5px 10px;
   width: 100px;
-  height: 34px;
+  height: 100%;
   color: ${({ theme }) => theme.color.basicText};
   transition: all 0.3s;
   :hover {
     background-color: #878787;
   }
-  @media (min-width: 992px) and (max-width: 1211px) {
+  @media only screen and (max-width: 992px) {
+    width: 120px;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 120px;
+  }
+  @media only screen and (max-width: 576px) {
     width: 120px;
   }
 `;
