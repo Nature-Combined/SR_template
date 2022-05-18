@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const myInfo = require("./myInfo.js");
-const changeMyColor = require("./changeMycolor.js");
+const changeMyColor = require("./changeMyColor.js");
 const myProfile = require("./myProfile.js");
 // const subscribe = require('../subscribe/subscribeList.js')
 // const subscribeDel = require('../subscribe/subscribeDel.js')

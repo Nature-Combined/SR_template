@@ -39,7 +39,6 @@ module.exports = async (req, res) => {
     ];
 
     db.query(sql, params, async (err, result, field) => {
-      const id = result[0].id;
       if (err) console.log(err);
       else if (result.length === 0) {
         const insert = `INSERT INTO user_info(created_time,user_id,sns_id,sns_type, color, profile_image, is_login) VALUES (?,?,?,"kakao", 'light', ?, 'true')`;
@@ -58,12 +57,12 @@ module.exports = async (req, res) => {
       } else {
         const update = `UPDATE user_info SET is_login = 'true' WHERE id = ?`;
         const params = [result[0].id];
-        db.query(update, params, (err, result, field) => {
+        db.query(update, params, (err, result4, field) => {
           if (err) console.log(err);
           //로그인 상태 true 만들고 변경된 값 불러오기 => client 전달
           else {
             const select = `SELECT * FROM user_info WHERE id = ? limit 1`;
-            const params = [id];
+            const params = [result[0].id];
             db.query(select, params, (err, data) => {
               if (err) console.log(err);
               else

@@ -85,6 +85,7 @@ export default function MyInfo({ myInfo }) {
                 <input
                   type="file"
                   id="file"
+                  accept="image/*"
                   onChange={(e) => {
                     handleProfile(e);
                   }}
